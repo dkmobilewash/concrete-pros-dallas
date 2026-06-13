@@ -1,4 +1,5 @@
 import { Service } from "@/types";
+import { serviceImages } from "./images";
 
 export const services: Service[] = [
   {
@@ -10,7 +11,7 @@ export const services: Service[] = [
     metaTitle: "Concrete Driveways in Dallas, TX | Concrete Pros Of Dallas",
     metaDescription:
       "Custom concrete driveways in Dallas, TX. Properly reinforced, 4-inch minimum pours with broom, exposed aggregate, and stamped finishes. Free estimates.",
-    heroImage: "https://picsum.photos/seed/cpd-driveways/1600/900",
+    heroImage: serviceImages["driveways"],
     heroSubtitle:
       "A driveway is the first thing people see — we build ones that last and lift your curb appeal.",
     intro: [
@@ -81,7 +82,7 @@ export const services: Service[] = [
     metaTitle: "Concrete Patios in Dallas, TX | Concrete Pros Of Dallas",
     metaDescription:
       "Custom concrete patios in Dallas, TX. Stamped and stained designs, cool-deck finishes for Texas heat, and low-maintenance surfaces. Get a free estimate.",
-    heroImage: "https://picsum.photos/seed/cpd-patios/1600/900",
+    heroImage: serviceImages["patios"],
     heroSubtitle:
       "Outdoor living, Dallas-style — a patio built for backyard evenings and weekend cookouts.",
     intro: [
@@ -162,7 +163,7 @@ export const services: Service[] = [
     metaTitle: "Concrete Pool Decks in Dallas, TX | Concrete Pros Of Dallas",
     metaDescription:
       "Concrete pool decks in Dallas, TX. Slip-resistant, cool-to-the-touch finishes and durable resurfacing for Texas pool season. Free estimates.",
-    heroImage: "https://picsum.photos/seed/cpd-pooldecks/1600/900",
+    heroImage: serviceImages["pool-decks"],
     heroSubtitle:
       "Cool underfoot, slip-resistant, and built for long Texas pool seasons.",
     intro: [
@@ -233,7 +234,7 @@ export const services: Service[] = [
     metaTitle: "Block & Retaining Walls in Dallas, TX | Concrete Pros Of Dallas",
     metaDescription:
       "Concrete block and retaining walls in Dallas, TX. Engineered CMU privacy walls, retaining walls, and garden borders with proper drainage. Free estimates.",
-    heroImage: "https://picsum.photos/seed/cpd-blockwalls/1600/900",
+    heroImage: serviceImages["block-walls"],
     heroSubtitle:
       "Retaining walls, privacy walls, and borders built strong and built to code.",
     intro: [
@@ -309,7 +310,7 @@ export const services: Service[] = [
     metaTitle: "Foundations & Concrete Slabs in Dallas, TX | Concrete Pros Of Dallas",
     metaDescription:
       "Engineered concrete foundations and slabs in Dallas, TX. Post-tension slabs for clay soil, garage floors, and shop pads, built to code. Free estimates.",
-    heroImage: "https://picsum.photos/seed/cpd-foundations/1600/900",
+    heroImage: serviceImages["foundations-slabs"],
     heroSubtitle:
       "The most important pour on any project — engineered for North Texas clay soil.",
     intro: [
@@ -390,7 +391,7 @@ export const services: Service[] = [
     metaTitle: "Commercial Concrete in Dallas, TX | Concrete Pros Of Dallas",
     metaDescription:
       "Commercial concrete contractor in Dallas, TX. Parking lots, sidewalks, ADA work, loading areas, and tilt-wall pads. Bonded, insured, fast turnaround.",
-    heroImage: "https://picsum.photos/seed/cpd-commercial/1600/900",
+    heroImage: serviceImages["commercial-concrete"],
     heroSubtitle:
       "Heavy-load commercial concrete for DFW businesses — on schedule and built to code.",
     intro: [

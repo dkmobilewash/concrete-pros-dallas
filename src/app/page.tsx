@@ -10,6 +10,7 @@ import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { JsonLd, localBusinessSchema } from "@/components/JsonLd";
+import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Concrete Pros Of Dallas | Driveways, Patios & More",
@@ -33,7 +34,7 @@ export default function HomePage() {
       <HeroSection
         title="Dallas's Concrete Experts"
         subtitle="From driveways to commercial slabs — quality work, fair prices, and a finish that lasts."
-        imageSrc="https://picsum.photos/seed/cpd-hero-home/1920/1080"
+        imageSrc={siteImages.homeHero}
         imageAlt="Freshly poured concrete driveway in front of a Dallas home"
         primaryCta={{ text: "Get a Free Estimate", href: "/contact" }}
         secondaryCta={{ text: "See Our Work", href: "/gallery" }}

@@ -6,6 +6,7 @@ import { Section } from "@/components/ui/Section";
 import { JsonLd, localBusinessSchema } from "@/components/JsonLd";
 import { SITE } from "@/lib/utils";
 import { cityNames } from "@/data/locations";
+import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Contact Concrete Pros Of Dallas | Free Estimates",
@@ -22,7 +23,7 @@ export default function ContactPage() {
       <HeroSection
         title="Get Your Free Concrete Estimate"
         subtitle="Call us or send a message — we respond within one business day."
-        imageSrc="https://picsum.photos/seed/cpd-contact-hero/1920/700"
+        imageSrc={siteImages.contactHero}
         imageAlt="Concrete Pros Of Dallas crew ready to start a project"
         height="sm"
       />

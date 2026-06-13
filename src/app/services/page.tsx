@@ -5,6 +5,7 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { CTABanner } from "@/components/sections/CTABanner";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Concrete Services in Dallas TX | Concrete Pros Of Dallas",
@@ -19,7 +20,7 @@ export default function ServicesPage() {
       <HeroSection
         title="Professional Concrete Services in Dallas"
         subtitle="Residential and commercial concrete, poured right the first time — across the entire DFW metroplex."
-        imageSrc="https://picsum.photos/seed/cpd-services-hero/1920/900"
+        imageSrc={siteImages.servicesHero}
         imageAlt="Concrete crew finishing a freshly poured slab in Dallas"
         height="md"
         primaryCta={{ text: "Get a Free Estimate", href: "/contact" }}

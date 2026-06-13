@@ -6,6 +6,7 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { locations } from "@/data/locations";
+import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Service Areas | Concrete Pros Of Dallas",
@@ -20,7 +21,7 @@ export default function ServiceAreasPage() {
       <HeroSection
         title="Serving the DFW Metroplex"
         subtitle="Local concrete contractors trusted by homeowners and businesses across Dallas–Fort Worth."
-        imageSrc="https://picsum.photos/seed/cpd-areas-hero/1920/700"
+        imageSrc={siteImages.serviceAreasHero}
         imageAlt="Map view of the Dallas–Fort Worth metroplex"
         height="sm"
       />

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { MapPin, ArrowRight, Star } from "lucide-react";
 import { getLocation } from "@/data/locations";
+import { locationHeroImages } from "@/data/images";
 import { getService } from "@/data/services";
 import { serviceIcons } from "@/lib/serviceIcons";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -44,7 +45,7 @@ export function LocationTemplate({ slug }: { slug: string }) {
         eyebrow="Service Area"
         title={`Concrete Contractors in ${loc.city}, TX`}
         subtitle={loc.heroSubtitle}
-        imageSrc={`https://picsum.photos/seed/cpd-loc-${loc.slug}/1920/900`}
+        imageSrc={locationHeroImages[loc.slug]}
         imageAlt={`Concrete work by Concrete Pros Of Dallas in ${loc.city}, Texas`}
         height="md"
         primaryCta={{ text: "Get a Free Estimate", href: "/contact" }}
