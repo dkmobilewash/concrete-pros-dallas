@@ -11,7 +11,7 @@ import { siteImages } from "@/data/images";
 export const metadata: Metadata = {
   title: "Contact Concrete Pros Of Dallas | Free Estimates",
   description:
-    "Contact us for a free concrete estimate in Dallas, TX. Call (214) 555-0100 or fill out our online form. We serve all DFW suburbs.",
+    "Contact us for a free concrete estimate in Dallas, TX. Call (214) 466-2536 or fill out our online form. We serve all DFW suburbs.",
   alternates: { canonical: "/contact" },
 };
 

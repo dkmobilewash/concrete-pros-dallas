@@ -8,8 +8,8 @@ export function cn(...classes: Array<string | false | null | undefined>): string
 
 export const SITE = {
   name: "Concrete Pros Of Dallas",
-  phone: "(214) 555-0100",
-  phoneHref: "tel:+12145550100",
+  phone: "(214) 466-2536",
+  phoneHref: "tel:+12144662536",
   email: "info@concreteprosofdalas.com",
   emailHref: "mailto:info@concreteprosofdalas.com",
   hours: "Mon–Sat 7am–6pm",
