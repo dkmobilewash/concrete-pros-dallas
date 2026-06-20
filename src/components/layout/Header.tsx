@@ -1,164 +1,146 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
-import { Menu, Phone, ChevronDown } from "lucide-react";
-import { Logo } from "./Logo";
-import { MobileMenu } from "./MobileMenu";
-import { SITE, cn } from "@/lib/utils";
-import { services } from "@/data/services";
-import { locations } from "@/data/locations";
+import { useState, useEffect } from 'react'
+import Link from 'next/link'
+import { Menu } from 'lucide-react'
+import { site } from '@/data/site'
+import { services } from '@/data/services'
+import { cities } from '@/data/cities'
+import MobileNav from './MobileNav'
 
-export function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+export default function Header() {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 80)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <>
       <header
-        className={cn(
-          "sticky top-0 z-50 w-full transition-colors duration-300",
-          scrolled
-            ? "border-b border-border bg-white/95 backdrop-blur"
-            : "bg-white",
-        )}
+        className={`sticky top-0 z-50 bg-brand-charcoal text-white ${
+          scrolled ? 'border-b border-brand-gray-mid/20' : ''
+        }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
-          <Logo />
+        <div className="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="text-xl font-bold text-white">
+            {site.name}
+          </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden items-center gap-1 font-display text-sm font-medium uppercase tracking-wide text-dark lg:flex">
-            <Dropdown
-              label="Services"
-              href="/services"
-              items={[
-                { label: "Concrete Services", href: "/services" },
-                ...services.map((s) => ({
-                  label: s.name,
-                  href: `/services/${s.slug}`,
-                })),
-              ]}
-            />
-            <Dropdown
-              label="Service Areas"
-              columns={2}
-              items={locations.map((l) => ({
-                label: l.city,
-                href: `/service-areas/${l.slug}`,
-              }))}
-            />
-            <NavLink href="/gallery">Gallery</NavLink>
-            <NavLink href="/contact">Contact Us</NavLink>
+          <nav className="hidden lg:flex items-center space-x-6">
+            {/* Services dropdown */}
+            <div className="relative group">
+              <button className="flex items-center text-sm font-medium hover:text-brand-orange transition">
+                Services
+                <svg
+                  className="ml-1 h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div className="absolute left-0 top-full hidden group-hover:block pt-2">
+                <div className="bg-brand-charcoal border border-brand-gray-mid/20 rounded-md shadow-lg py-2 min-w-[220px]">
+                  {services.map((service) => (
+                    <Link
+                      key={service.slug}
+                      href={`/services/${service.slug}`}
+                      className="block px-4 py-2 text-sm text-brand-gray hover:text-white hover:bg-brand-gray-mid/20 transition"
+                    >
+                      {service.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Service Areas dropdown */}
+            <div className="relative group">
+              <button className="flex items-center text-sm font-medium hover:text-brand-orange transition">
+                Service Areas
+                <svg
+                  className="ml-1 h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              <div className="absolute left-0 top-full hidden group-hover:block pt-2">
+                <div className="bg-brand-charcoal border border-brand-gray-mid/20 rounded-md shadow-lg py-2 min-w-[200px] max-h-[400px] overflow-y-auto">
+                  {cities.map((city) => (
+                    <Link
+                      key={city.slug}
+                      href={`/service-areas/${city.slug}`}
+                      className="block px-4 py-2 text-sm text-brand-gray hover:text-white hover:bg-brand-gray-mid/20 transition"
+                    >
+                      {city.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <Link
+              href="/about"
+              className="text-sm font-medium hover:text-brand-orange transition"
+            >
+              About
+            </Link>
+            <Link
+              href="/blog"
+              className="text-sm font-medium hover:text-brand-orange transition"
+            >
+              Blog
+            </Link>
+            <Link
+              href="/contact"
+              className="text-sm font-medium hover:text-brand-orange transition"
+            >
+              Contact
+            </Link>
           </nav>
 
-          <div className="flex items-center gap-2">
-            <a
-              href={SITE.phoneHref}
-              className="hidden items-center gap-2 rounded-lg bg-accent px-4 py-2.5 font-display text-sm font-medium text-white transition-colors hover:bg-accent-dark sm:inline-flex"
-            >
-              <Phone className="h-4 w-4" />
-              {SITE.phone}
-            </a>
-            <button
-              onClick={() => setMobileOpen(true)}
-              aria-label="Open menu"
-              className="flex h-11 w-11 items-center justify-center rounded-lg text-dark hover:bg-light lg:hidden"
-            >
-              <Menu className="h-6 w-6" />
-            </button>
-          </div>
+          {/* Desktop CTA */}
+          <a
+            href={site.phoneHref}
+            className="hidden lg:flex bg-brand-orange hover:bg-brand-orange-dark px-4 py-2 rounded-full text-sm font-semibold transition"
+          >
+            Call {site.phone}
+          </a>
+
+          {/* Mobile hamburger */}
+          <button
+            className="flex lg:hidden"
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu className="h-6 w-6" />
+          </button>
         </div>
       </header>
 
-      <MobileMenu open={mobileOpen} onClose={() => setMobileOpen(false)} />
+      <MobileNav isOpen={mobileOpen} onClose={() => setMobileOpen(false)} />
     </>
-  );
-}
-
-function NavLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className="rounded-md px-4 py-2 transition-colors hover:text-accent"
-    >
-      {children}
-    </Link>
-  );
-}
-
-function Dropdown({
-  label,
-  href,
-  items,
-  columns = 1,
-}: {
-  label: string;
-  href?: string;
-  items: { label: string; href: string }[];
-  columns?: 1 | 2;
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-    >
-      <button
-        className="flex items-center gap-1 rounded-md px-4 py-2 transition-colors hover:text-accent"
-        aria-haspopup="true"
-        aria-expanded={open}
-        onClick={() => setOpen((o) => !o)}
-      >
-        {label}
-        <ChevronDown
-          className={cn("h-4 w-4 transition-transform", open && "rotate-180")}
-        />
-      </button>
-      {open && (
-        <div className="absolute left-0 top-full pt-2">
-          <div
-            className={cn(
-              "rounded-lg border border-border bg-white p-2 shadow-lg",
-              columns === 2 ? "grid w-[28rem] grid-cols-2 gap-1" : "w-64",
-            )}
-          >
-            {href && (
-              <Link
-                href={href}
-                className="col-span-full rounded-md px-3 py-2 text-accent transition-colors hover:bg-light"
-              >
-                View All →
-              </Link>
-            )}
-            {items
-              .filter((i) => i.href !== href)
-              .map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-md px-3 py-2 text-mid transition-colors hover:bg-light hover:text-accent"
-                >
-                  {item.label}
-                </Link>
-              ))}
-          </div>
-        </div>
-      )}
-    </div>
-  );
+  )
 }
