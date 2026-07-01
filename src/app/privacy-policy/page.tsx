@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { SITE } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Concrete Pros Of Dallas",
+  title: "Privacy Policy",
   description:
     "Read the Concrete Pros Of Dallas privacy policy — what information we collect through our contact form, how we use it, and how to request removal.",
   alternates: { canonical: "/privacy-policy" },

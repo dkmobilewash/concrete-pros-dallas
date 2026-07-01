@@ -9,7 +9,12 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
-import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
+import {
+  JsonLd,
+  breadcrumbSchema,
+  serviceSchema,
+  faqPageSchema,
+} from "@/components/JsonLd";
 import { SITE } from "@/lib/utils";
 
 export function buildServiceMetadata(slug: string): Metadata {
@@ -45,16 +50,14 @@ export function ServiceTemplate({ slug }: { slug: string }) {
         ])}
       />
       <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "Service",
+        data={serviceSchema({
           name: service.name,
-          serviceType: service.name,
-          provider: { "@type": "LocalBusiness", name: SITE.name },
-          areaServed: "Dallas–Fort Worth metroplex, TX",
+          slug: service.slug,
           description: service.metaDescription,
-        }}
+          image: service.heroImage,
+        })}
       />
+      {service.faq.length > 0 && <JsonLd data={faqPageSchema(service.faq)} />}
 
       <HeroSection
         title={service.name}

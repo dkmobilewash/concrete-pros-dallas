@@ -57,3 +57,84 @@ export function breadcrumbSchema(
     })),
   };
 }
+
+/**
+ * FAQPage schema built from visible on-page FAQ content. Each entry becomes a
+ * Question with an acceptedAnswer, per Google's Rich Results structure.
+ */
+export function faqPageSchema(
+  faqs: { question: string; answer: string }[],
+): Record<string, unknown> {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.answer,
+      },
+    })),
+  };
+}
+
+/** Service schema for an individual service page (domain-correct @id/url). */
+export function serviceSchema(service: {
+  name: string;
+  slug: string;
+  description: string;
+  image?: string;
+}): Record<string, unknown> {
+  const url = `${SITE.url}/services/${service.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": url,
+    url,
+    name: service.name,
+    serviceType: service.name,
+    description: service.description,
+    ...(service.image ? { image: service.image } : {}),
+    provider: {
+      "@type": "LocalBusiness",
+      "@id": SITE.url,
+      name: SITE.name,
+      telephone: SITE.phone,
+    },
+    areaServed: "Dallas–Fort Worth metroplex, TX",
+  };
+}
+
+/**
+ * ProfessionalService schema for a city/service-area page, with areaServed
+ * scoped to that specific city (not a generic DFW value).
+ */
+export function cityServiceSchema(city: {
+  city: string;
+  slug: string;
+  description: string;
+}): Record<string, unknown> {
+  const url = `${SITE.url}/service-areas/${city.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": url,
+    url,
+    name: `${SITE.name} — ${city.city}, TX`,
+    description: city.description,
+    image: `${SITE.url}/og-image.jpg`,
+    telephone: SITE.phone,
+    email: SITE.email,
+    priceRange: "$$",
+    provider: {
+      "@type": "LocalBusiness",
+      "@id": SITE.url,
+      name: SITE.name,
+    },
+    areaServed: {
+      "@type": "City",
+      name: `${city.city}, TX`,
+    },
+  };
+}

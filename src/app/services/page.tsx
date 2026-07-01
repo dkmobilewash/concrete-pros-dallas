@@ -8,7 +8,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
-  title: "Concrete Services in Dallas TX | Concrete Pros Of Dallas",
+  title: "Concrete Services in Dallas, TX",
   description:
     "Explore our full range of concrete services including driveways, patios, pool decks, block walls, foundations, and commercial concrete work in Dallas, TX.",
   alternates: { canonical: "/services" },

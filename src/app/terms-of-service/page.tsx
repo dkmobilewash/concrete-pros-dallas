@@ -3,7 +3,7 @@ import { Section } from "@/components/ui/Section";
 import { SITE } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Concrete Pros Of Dallas",
+  title: "Terms of Service",
   description:
     "The terms of service governing use of the Concrete Pros Of Dallas website, including disclaimers, limitation of liability, and governing law.",
   alternates: { canonical: "/terms-of-service" },

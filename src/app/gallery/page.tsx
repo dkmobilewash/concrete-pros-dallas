@@ -6,7 +6,7 @@ import { Section } from "@/components/ui/Section";
 import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
-  title: "Concrete Project Gallery | Concrete Pros Of Dallas",
+  title: "Concrete Project Gallery",
   description:
     "Browse photos of our completed concrete projects across the DFW area — driveways, patios, pool decks, block walls, and more.",
   alternates: { canonical: "/gallery" },

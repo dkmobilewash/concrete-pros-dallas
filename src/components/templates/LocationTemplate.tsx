@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { MapPin, ArrowRight, Star } from "lucide-react";
+import { MapPin, ArrowRight, Star, ChevronDown } from "lucide-react";
 import { getLocation } from "@/data/locations";
 import { locationHeroImages } from "@/data/images";
 import { getService } from "@/data/services";
@@ -11,7 +11,12 @@ import { CTABanner } from "@/components/sections/CTABanner";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { JsonLd, breadcrumbSchema } from "@/components/JsonLd";
+import {
+  JsonLd,
+  breadcrumbSchema,
+  cityServiceSchema,
+  faqPageSchema,
+} from "@/components/JsonLd";
 
 export function buildLocationMetadata(slug: string): Metadata {
   const loc = getLocation(slug);
@@ -40,6 +45,14 @@ export function LocationTemplate({ slug }: { slug: string }) {
           { name: loc.city, path: `/service-areas/${loc.slug}` },
         ])}
       />
+      <JsonLd
+        data={cityServiceSchema({
+          city: loc.city,
+          slug: loc.slug,
+          description: loc.metaDescription,
+        })}
+      />
+      {loc.faq.length > 0 && <JsonLd data={faqPageSchema(loc.faq)} />}
 
       <HeroSection
         eyebrow="Service Area"
@@ -155,6 +168,33 @@ export function LocationTemplate({ slug }: { slug: string }) {
           , and more communities across the DFW metroplex.
         </p>
       </Section>
+
+      {/* City-specific FAQ */}
+      {loc.faq.length > 0 && (
+        <Section background="white">
+          <SectionHeading
+            eyebrow="Questions"
+            title={`Concrete FAQs for ${loc.city} Homeowners`}
+          />
+          <div className="mx-auto mt-10 max-w-3xl space-y-4">
+            {loc.faq.map((item) => (
+              <details
+                key={item.question}
+                className="group rounded-lg border border-border bg-light p-5 shadow-sm [&_svg]:open:rotate-180"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between font-display text-lg font-semibold text-dark">
+                  {item.question}
+                  <ChevronDown
+                    className="h-5 w-5 shrink-0 text-accent transition-transform"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="accordion-content mt-3 text-mid">{item.answer}</p>
+              </details>
+            ))}
+          </div>
+        </Section>
+      )}
 
       {/* Contact form, city pre-selected */}
       <Section background="light">

@@ -9,7 +9,7 @@ import { locations } from "@/data/locations";
 import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
-  title: "Service Areas | Concrete Pros Of Dallas",
+  title: "Concrete Service Areas Across DFW",
   description:
     "Concrete Pros Of Dallas serves Plano, Allen, Richardson, Garland, Arlington, Coppell, and communities across the DFW metroplex. Find your city.",
   alternates: { canonical: "/service-areas" },

@@ -1,6 +1,8 @@
 /** @type {import('next-sitemap').IConfig} */
+// siteUrl derives from the same NEXT_PUBLIC_SITE_URL used by src/lib/utils.ts
+// (SITE.url) so canonical tags, JSON-LD, and the sitemap can never drift apart.
 module.exports = {
-  siteUrl: "https://concreteprosofdalas.com",
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || "https://www.concreteprosdallas.com",
   generateRobotsTxt: true,
   changefreq: "monthly",
   priority: 0.7,

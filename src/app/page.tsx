@@ -13,7 +13,9 @@ import { JsonLd, localBusinessSchema } from "@/components/JsonLd";
 import { siteImages } from "@/data/images";
 
 export const metadata: Metadata = {
-  title: "Concrete Pros Of Dallas | Driveways, Patios & More",
+  // absolute bypasses the layout's "%s | Concrete Pros Of Dallas" template so
+  // the brand isn't duplicated on the homepage.
+  title: { absolute: "Concrete Pros Of Dallas | Driveways, Patios & More" },
   description:
     "Dallas's trusted concrete contractors. We pour driveways, patios, pool decks, and more across the DFW metroplex. Get a free estimate today.",
   alternates: { canonical: "/" },

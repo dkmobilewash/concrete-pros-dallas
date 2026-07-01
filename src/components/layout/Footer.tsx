@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Facebook, Instagram, MapPin, Phone, Mail, Clock } from "lucide-react";
 import { Logo } from "./Logo";
-import { SITE } from "@/lib/utils";
+import { SITE, TRUST } from "@/lib/utils";
 import { services } from "@/data/services";
 import { locations } from "@/data/locations";
 
@@ -20,6 +20,19 @@ export function Footer() {
               Licensed and fully insured concrete contractors serving the Dallas–Fort
               Worth metroplex since {SITE.foundedYear}. Free estimates on every project.
             </p>
+            {/* Trust specifics — render only the fields that have been filled in
+                (see TRUST in src/lib/utils.ts). Hidden until real values are set. */}
+            {(TRUST.warranty ||
+              TRUST.financingPartner ||
+              TRUST.licenseId ||
+              TRUST.insuranceId) && (
+              <ul className="mt-4 space-y-1 text-sm text-light/70">
+                {TRUST.warranty && <li>{TRUST.warranty}</li>}
+                {TRUST.financingPartner && <li>{TRUST.financingPartner}</li>}
+                {TRUST.licenseId && <li>{TRUST.licenseId}</li>}
+                {TRUST.insuranceId && <li>{TRUST.insuranceId}</li>}
+              </ul>
+            )}
             <div className="mt-5 flex gap-3">
               <SocialIcon
                 href="https://facebook.com"

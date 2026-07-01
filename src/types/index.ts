@@ -47,6 +47,7 @@ export interface Location {
     name: string;
     city: string;
   };
+  faq: FAQ[];
 }
 
 export interface GalleryImage {
