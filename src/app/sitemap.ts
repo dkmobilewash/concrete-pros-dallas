@@ -25,12 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
   return [
     { url: site.baseUrl, priority: 1.0, changeFrequency: 'weekly' },
+    { url: `${site.baseUrl}/services`, priority: 0.9, changeFrequency: 'monthly' },
+    { url: `${site.baseUrl}/service-areas`, priority: 0.9, changeFrequency: 'monthly' },
     { url: `${site.baseUrl}/about`, priority: 0.6, changeFrequency: 'yearly' },
-    {
-      url: `${site.baseUrl}/contact`,
-      priority: 0.9,
-      changeFrequency: 'monthly',
-    },
+    { url: `${site.baseUrl}/contact`, priority: 0.9, changeFrequency: 'monthly' },
     { url: `${site.baseUrl}/blog`, priority: 0.5, changeFrequency: 'weekly' },
     ...serviceUrls,
     ...cityUrls,

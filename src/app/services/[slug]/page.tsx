@@ -12,7 +12,7 @@ import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 import { ServiceSchema } from '@/components/seo/ServiceSchema'
 import { Button } from '@/components/ui/Button'
 import Link from 'next/link'
-import { CheckCircle, ArrowRight } from 'lucide-react'
+import { CheckCircle, ArrowRight, Wrench, Paintbrush } from 'lucide-react'
 
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }))
@@ -205,6 +205,56 @@ const serviceContent: Record<
       { question: 'Can you work around our business hours?', answer: 'We offer flexible scheduling including early morning and weekend pours to minimize disruption to your operations.' },
       { question: 'Do you provide documentation for inspections?', answer: 'Yes, we provide mix design tickets, placement records, and test results as required by your project specifications.' },
       { question: 'What commercial projects do you handle?', answer: 'Parking lots, loading docks, warehouse floors, sidewalks, curb and gutter, ADA ramps, and building pads for commercial and industrial properties.' },
+    ],
+  },
+  'concrete-repair': {
+    overview: [
+      'Concrete repair in Dallas addresses the wear and damage that comes with years of use and exposure to North Texas weather. From hairline surface cracks to deep structural settling, concrete repair restores safety, function, and appearance without the cost and disruption of a full tear-out and replacement. Dallas concrete repair is especially common for driveways, sidewalks, patios, and garage floors where cracks, spalling, and uneven slabs create trip hazards and allow water infiltration that worsens the problem over time.',
+      'The Dallas area\'s expansive clay soils are a leading cause of concrete damage. Seasonal moisture swings cause the ground to heave and shrink, placing stress on slabs that leads to cracking and settling. Add intense summer heat, occasional freeze-thaw cycles, and heavy vehicle loads, and even well-installed concrete eventually needs attention. Our concrete crack repair services range from epoxy injection and routing-and-sealing for surface cracks to full-depth patching, slab jacking, and joint replacement for more serious issues. In many cases, targeted repair extends the useful life of your concrete by a decade or more at a fraction of the replacement price.',
+    ],
+    benefits: [
+      { title: 'Cost Savings vs. Replacement', desc: 'Repairing damaged sections typically costs 40-60% less than full removal and replacement, preserving your budget for other improvements.' },
+      { title: 'Trip Hazard Elimination', desc: 'Leveling settled slabs and filling cracks removes dangerous trip hazards from walkways, driveways, and patios, reducing liability.' },
+      { title: 'Extended Concrete Lifespan', desc: 'Sealing cracks and patching spalled areas stops water infiltration and prevents small problems from becoming costly failures.' },
+      { title: 'Curb Appeal Restoration', desc: 'Professionally repaired concrete restores a clean, uniform appearance that improves your property\'s overall look and value.' },
+    ],
+    process: [
+      { step: 'Assessment & Diagnosis', desc: 'We inspect the damage, identify root causes such as soil movement or drainage issues, and recommend the most effective repair approach for your situation.' },
+      { step: 'Surface Prep & Crack Routing', desc: 'Damaged areas are cleaned, loose material is removed, and cracks are routed or chased to create a proper bonding profile for the repair material.' },
+      { step: 'Repair, Patching & Leveling', desc: 'Cracks are filled with flexible epoxy or polyurethane sealant, spalled areas receive polymer-modified patching compound, and settled slabs are lifted with polyurethane foam injection.' },
+      { step: 'Curing & Sealing', desc: 'Repaired surfaces are cured to full strength, then sealed to protect against moisture penetration, UV exposure, and future cracking.' },
+    ],
+    faqs: [
+      { question: 'Can cracked concrete be repaired instead of replaced?', answer: 'In most cases, yes. Cracks up to about half an inch wide can be effectively sealed or filled. Wider cracks, severely settled slabs, or concrete with extensive structural damage may require partial or full replacement. We assess every job and give you an honest recommendation.' },
+      { question: 'How much does concrete repair cost in Dallas?', answer: 'Minor crack sealing starts around $3-$5 per linear foot. Patching and slab leveling typically run $500-$2,000 depending on the area and severity. We provide a detailed written estimate after inspecting your concrete at no charge.' },
+      { question: 'How long does concrete repair take?', answer: 'Most residential concrete repairs are completed in a single day. Larger projects involving slab leveling or multiple areas may take two days. You can typically walk on repaired surfaces within 24 hours and drive on them within 48-72 hours.' },
+      { question: 'What causes concrete to crack in Dallas?', answer: 'The primary causes are expansive clay soil movement, temperature fluctuations causing thermal expansion and contraction, tree root pressure, heavy loads exceeding design capacity, and improper original installation such as insufficient control joints or base compaction.' },
+      { question: 'Do you repair commercial concrete?', answer: 'Yes, we repair concrete for commercial properties including parking lots, warehouse floors, loading docks, and sidewalks. We schedule commercial work to minimize disruption to your business operations.' },
+    ],
+  },
+  'concrete-resurfacing': {
+    overview: [
+      'Concrete resurfacing in Dallas is the process of applying a thin, durable overlay to an existing concrete surface that is structurally sound but cosmetically worn. Rather than tearing out and replacing an entire driveway, patio, or pool deck, a concrete overlay bonds to the existing slab and provides a fresh, attractive finish at a fraction of the cost. Resurfacing is the right choice when your concrete has minor surface damage, discoloration, or outdated appearance but the underlying slab is stable and free of major structural cracks or settling.',
+      'Dallas properties face particular challenges that make resurfacing and concrete sealing valuable maintenance strategies. Intense UV exposure fades and degrades unprotected surfaces, summer heat above 100 degrees accelerates surface wear, and occasional winter freezes can cause flaking on unsealed concrete. Our resurfacing process addresses all of these factors with high-performance overlay materials rated for extreme temperatures and UV stability. We offer multiple finish options including spray-texture coatings, smooth troweled overlays, and stamped overlay patterns that mimic stone or tile. Every resurfaced project receives a professional-grade sealer that locks in the new finish and provides years of protection against the Dallas climate.',
+    ],
+    benefits: [
+      { title: 'Fraction of Replacement Cost', desc: 'Resurfacing typically costs 30-50% of what full removal and replacement would run, making it the most budget-friendly way to renew worn concrete.' },
+      { title: 'Multiple Finish Options', desc: 'Choose from stamped overlays that mimic natural stone, spray-texture coatings for pool decks, or smooth troweled finishes for a modern, clean look.' },
+      { title: 'UV & Weather Protection', desc: 'High-performance overlay materials and sealers are formulated to resist Dallas UV intensity, heat, and moisture without fading or peeling.' },
+      { title: 'Minimal Disruption & Fast Turnaround', desc: 'Most residential resurfacing projects are completed in 1-2 days with minimal noise and debris compared to a full tear-out.' },
+    ],
+    process: [
+      { step: 'Surface Evaluation', desc: 'We inspect the existing slab for structural integrity, test adhesion, and confirm that resurfacing is the right solution. Slabs with major settling or deep structural cracks may need repair first.' },
+      { step: 'Cleaning & Profiling', desc: 'The surface is pressure washed, degreased if needed, and mechanically profiled with a grinder or shot blaster to create the rough texture required for a strong overlay bond.' },
+      { step: 'Overlay Application & Finishing', desc: 'The polymer-modified overlay is applied in one or more coats, then textured, stamped, or troweled to your chosen finish. Color is integrated into the material for long-lasting appearance.' },
+      { step: 'Sealing & Curing', desc: 'A UV-stable, slip-resistant sealer is applied to protect the new surface. The overlay cures to foot-traffic strength within 24 hours and full strength within 3-5 days.' },
+    ],
+    faqs: [
+      { question: 'How long does resurfaced concrete last?', answer: 'A professionally applied concrete overlay lasts 10-15 years or longer with proper maintenance. Resealing every 2-3 years and keeping the surface clean significantly extends its life.' },
+      { question: 'Can you resurface a stamped concrete surface?', answer: 'Yes, existing stamped concrete can be resurfaced with a new overlay. The old pattern is covered, and a new texture or stamp can be applied. The existing surface must be structurally sound for the overlay to bond properly.' },
+      { question: 'What is the difference between resurfacing and sealing?', answer: 'Sealing applies a thin protective coating to existing concrete without changing its appearance or repairing surface damage. Resurfacing applies a thicker overlay that covers imperfections and creates an entirely new surface. Many projects benefit from both — resurfacing followed by sealing.' },
+      { question: 'How much does concrete resurfacing cost in Dallas?', answer: 'Concrete resurfacing in Dallas typically costs $3-$8 per square foot depending on the overlay type and finish selected. Stamped overlays and decorative finishes are at the higher end. We provide free on-site estimates.' },
+      { question: 'Is resurfacing better than replacing concrete?', answer: 'Resurfacing is better when the existing slab is structurally sound and you want to improve appearance at lower cost. Replacement is the better choice when concrete has deep structural cracks, significant settling, or drainage problems that a surface overlay cannot fix.' },
     ],
   },
 }

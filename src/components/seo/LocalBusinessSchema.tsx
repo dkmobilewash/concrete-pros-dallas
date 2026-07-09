@@ -9,11 +9,12 @@ interface LocalBusinessSchemaProps {
 export function LocalBusinessSchema({ city }: LocalBusinessSchemaProps) {
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
+    '@type': 'HomeAndConstructionBusiness',
     name: site.name,
     telephone: site.phone,
     email: site.email,
     url: site.baseUrl,
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       addressLocality: city || site.address.city,
@@ -21,23 +22,26 @@ export function LocalBusinessSchema({ city }: LocalBusinessSchemaProps) {
       addressCountry: 'US',
     },
     areaServed: cities.map(c => ({
-      '@type': 'Place',
-      name: c.name,
+      '@type': 'City',
+      name: `${c.name}, TX`,
     })),
-    openingHoursSpecification: {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '08:00',
-      closes: '18:00',
-    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+    ],
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: 'Concrete Services',
-      itemListElement: services.slice(0, 5).map(service => ({
+      itemListElement: services.map(service => ({
         '@type': 'Offer',
         itemOffered: {
           '@type': 'Service',
           name: service.name,
+          description: service.metaDescription,
         },
       })),
     },

@@ -12,14 +12,22 @@ export function ServiceSchema({ name, description }: ServiceSchemaProps) {
     name,
     description,
     provider: {
-      '@type': 'LocalBusiness',
+      '@type': 'HomeAndConstructionBusiness',
       name: site.name,
       telephone: site.phone,
+      url: site.baseUrl,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: site.address.city,
+        addressRegion: site.address.stateCode,
+        addressCountry: 'US',
+      },
     },
     areaServed: {
       '@type': 'State',
       name: site.address.state,
     },
+    serviceType: name,
   }
 
   return (

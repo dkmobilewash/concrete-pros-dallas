@@ -12,7 +12,7 @@ export const site = {
     weekdays: 'Monday–Saturday: 8:00 AM – 6:00 PM',
     weekend: 'Sunday: Closed',
   },
-  baseUrl: 'http://dallasconcretepros.net',
+  baseUrl: 'https://dallasconcretepros.net',
   primaryKeywords: [
     'Dallas Concrete Contractors',
     'Concrete Contractors Dallas TX',

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Car, Sofa, Footprints, Building2, Layers, Palette, Warehouse, type LucideIcon } from 'lucide-react'
+import { Car, Sofa, Footprints, Building2, Layers, Palette, Warehouse, Wrench, Paintbrush, type LucideIcon } from 'lucide-react'
 
 const iconMap: Record<string, LucideIcon> = {
   Car,
@@ -9,6 +9,8 @@ const iconMap: Record<string, LucideIcon> = {
   Layers,
   Palette,
   Warehouse,
+  Wrench,
+  Paintbrush,
 }
 
 interface ServiceCardProps {
