@@ -1,5 +1,6 @@
 import { ServiceCard } from '@/components/ui/ServiceCard'
 import { services } from '@/data/services'
+import { serviceImages } from '@/data/images'
 
 const descriptions: Record<string, string> = {
   'concrete-driveways':
@@ -16,6 +17,10 @@ const descriptions: Record<string, string> = {
     'The look of natural stone or brick at a fraction of the cost.',
   'commercial-concrete':
     'Heavy-duty solutions for parking lots, docks, and commercial properties.',
+  'concrete-repair':
+    'Restore cracked, settled, or damaged concrete without full replacement.',
+  'concrete-resurfacing':
+    'Renew worn surfaces with durable overlays and professional sealing.',
 }
 
 export function ServicesGrid() {
@@ -36,6 +41,7 @@ export function ServicesGrid() {
               name={service.name}
               icon={service.icon}
               description={descriptions[service.slug] ?? ''}
+              image={serviceImages[service.slug]?.card}
             />
           ))}
         </div>

@@ -7,7 +7,9 @@ import { ServiceAreasSection } from '@/components/sections/ServiceAreasSection'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { FaqSection } from '@/components/sections/FaqSection'
 import { CtaSection } from '@/components/sections/CtaSection'
+import { ProjectGallery } from '@/components/sections/ProjectGallery'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
+import { heroImage } from '@/data/images'
 
 export const metadata: Metadata = {
   title: {
@@ -58,6 +60,7 @@ export default function HomePage() {
         headline="Concrete Contractors in Dallas, TX"
         subhead="Dallas Concrete Pros delivers professional concrete installation, repair, and resurfacing for residential and commercial properties across the Dallas-Fort Worth metroplex. From driveways and patios to foundations and commercial flatwork — get a free estimate today."
         showPhoneCta
+        backgroundImage={heroImage}
       />
 
       <section className="py-16 bg-white">
@@ -96,6 +99,7 @@ export default function HomePage() {
       <ServicesGrid />
       <WhyChooseUs />
       <ServiceAreasSection />
+      <ProjectGallery />
       <TestimonialsSection />
       <FaqSection faqs={homeFaqs} />
       <CtaSection />

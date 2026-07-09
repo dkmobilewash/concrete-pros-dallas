@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { cities } from '@/data/cities'
 import { services } from '@/data/services'
 import { site } from '@/data/site'
+import { homepageGallery } from '@/data/images'
 import { buildMetadata } from '@/lib/metadata'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
@@ -371,8 +373,29 @@ export default function CityPage({
         </div>
       </section>
 
+      <section className="bg-white py-16">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal mb-8 text-center">
+            Our Concrete Work in the {city.name} Area
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {homepageGallery.slice(0, 3).map((img) => (
+              <div key={img.src} className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                <Image
+                  src={img.src}
+                  alt={`${img.alt} — serving ${city.name}, TX`}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, 33vw"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {extended && (
-        <section className="bg-white py-16">
+        <section className="bg-brand-gray-light py-16">
           <div className="max-w-4xl mx-auto px-4">
             <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal mb-6">
               Soil & Climate Considerations in {city.name}
