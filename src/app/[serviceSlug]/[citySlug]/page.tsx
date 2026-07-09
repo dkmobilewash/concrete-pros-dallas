@@ -211,7 +211,7 @@ export default function ServiceCityPage({
             <p className="text-brand-gray text-sm mb-4">
               Every property is different. Contact us for a free on-site estimate tailored to your {city.name} property.
             </p>
-            <Button href="/contact" size="sm">
+            <Button href="/contact">
               Request Free Estimate <ArrowRight className="w-4 h-4 ml-1" />
             </Button>
           </div>
