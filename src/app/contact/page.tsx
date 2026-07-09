@@ -1,117 +1,85 @@
-import type { Metadata } from "next";
-import { Phone, Mail, Clock, MapPin, ShieldCheck } from "lucide-react";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { ContactForm } from "@/components/forms/ContactForm";
-import { Section } from "@/components/ui/Section";
-import { JsonLd, localBusinessSchema } from "@/components/JsonLd";
-import { SITE } from "@/lib/utils";
-import { cityNames } from "@/data/locations";
-import { siteImages } from "@/data/images";
+import type { Metadata } from 'next'
+import { buildMetadata } from '@/lib/metadata'
+import { site } from '@/data/site'
+import { ContactForm } from './ContactForm'
+import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
+import { Phone, Mail, Clock } from 'lucide-react'
 
-export const metadata: Metadata = {
-  title: { absolute: "Contact Concrete Pros Of Dallas | Free Estimates" },
-  description:
-    "Contact us for a free concrete estimate in Dallas, TX. Call (214) 466-2536 or fill out our online form. We serve all DFW suburbs.",
-  alternates: { canonical: "/contact" },
-};
+export const metadata: Metadata = buildMetadata({
+  title: 'Contact Us for a Free Concrete Estimate',
+  description: `Get a free concrete estimate in Dallas, TX. Call ${site.phone} or fill out our form. Driveways, patios, foundations, and more.`,
+  canonical: `${site.baseUrl}/contact`,
+})
 
 export default function ContactPage() {
   return (
     <>
-      <JsonLd data={localBusinessSchema} />
+      <LocalBusinessSchema />
 
-      <HeroSection
-        title="Get Your Free Concrete Estimate"
-        subtitle="Call us or send a message — we respond within one business day."
-        imageSrc={siteImages.contactHero}
-        imageAlt="Concrete Pros Of Dallas crew ready to start a project"
-        height="sm"
-      />
+      <section className="bg-brand-charcoal text-white py-20">
+        <div className="max-w-4xl mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-extrabold">
+            Get a Free Concrete Estimate in Dallas
+          </h1>
+          <p className="text-lg text-brand-gray-mid mt-4">
+            Tell us about your project and we will get back to you within one
+            business day.
+          </p>
+        </div>
+      </section>
 
-      <Section background="white">
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-5">
-          {/* Form */}
-          <div className="lg:col-span-3">
-            <h2 className="font-display text-3xl font-semibold text-dark">
-              Request a Free Quote
-            </h2>
-            <p className="mt-2 text-mid">
-              Tell us about your project and we&apos;ll be in touch within one
-              business day.
-            </p>
-            <div className="mt-6 rounded-lg border border-border bg-white p-6 shadow-md sm:p-8">
-              <ContactForm />
-            </div>
+      <section className="py-16">
+        <div className="max-w-5xl mx-auto px-4 grid md:grid-cols-5 gap-12">
+          <div className="md:col-span-3">
+            <ContactForm />
           </div>
 
-          {/* Info */}
-          <aside className="lg:col-span-2">
-            <div className="rounded-lg bg-primary p-8 text-white">
-              <h2 className="font-display text-2xl font-semibold text-white">
+          <div className="md:col-span-2 space-y-8">
+            <div>
+              <h2 className="text-xl font-bold text-brand-charcoal mb-4">
                 Contact Information
               </h2>
-
-              <a
-                href={SITE.phoneHref}
-                className="mt-6 flex items-center gap-4 rounded-lg bg-white/10 p-4 transition-colors hover:bg-white/20"
-              >
-                <Phone className="h-7 w-7 shrink-0 text-accent" />
-                <span>
-                  <span className="block text-sm text-light/70">Call us</span>
-                  <span className="font-display text-xl font-semibold">
-                    {SITE.phone}
-                  </span>
-                </span>
-              </a>
-
-              <ul className="mt-6 space-y-4 text-sm">
-                <li className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                  <span>
-                    <span className="block text-light/70">Email</span>
-                    <a href={SITE.emailHref} className="break-all hover:text-accent">
-                      {SITE.email}
-                    </a>
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Clock className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                  <span>
-                    <span className="block text-light/70">Business Hours</span>
-                    {SITE.hours}
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                  <span>
-                    <span className="block text-light/70">Service Area</span>
-                    {cityNames.join(", ")}, and all of DFW.
-                  </span>
-                </li>
-              </ul>
-
-              <div className="mt-6 flex items-center gap-3 rounded-lg bg-accent/20 p-4 text-sm">
-                <ShieldCheck className="h-6 w-6 shrink-0 text-accent" />
-                <span>We respond within 1 business day.</span>
+              <div className="space-y-4">
+                <a
+                  href={site.phoneHref}
+                  className="flex items-center gap-3 text-brand-gray hover:text-brand-orange transition-colors"
+                >
+                  <Phone className="w-5 h-5 text-brand-orange" />
+                  {site.phone}
+                </a>
+                <a
+                  href={`mailto:${site.email}`}
+                  className="flex items-center gap-3 text-brand-gray hover:text-brand-orange transition-colors"
+                >
+                  <Mail className="w-5 h-5 text-brand-orange" />
+                  {site.email}
+                </a>
               </div>
             </div>
-          </aside>
-        </div>
-      </Section>
 
-      {/* Map */}
-      <div className="h-[400px] w-full">
-        <iframe
-          title="Concrete Pros Of Dallas service area map"
-          src="https://www.google.com/maps?q=Dallas,TX&output=embed"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          allowFullScreen
-        />
-      </div>
+            <div>
+              <h3 className="text-lg font-semibold text-brand-charcoal mb-3 flex items-center gap-2">
+                <Clock className="w-5 h-5 text-brand-orange" />
+                Business Hours
+              </h3>
+              <p className="text-brand-gray">{site.hours.weekdays}</p>
+              <p className="text-brand-gray">{site.hours.weekend}</p>
+            </div>
+
+            <div className="bg-brand-gray-light rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-brand-charcoal mb-2">
+                Why Choose Us?
+              </h3>
+              <ul className="text-brand-gray space-y-2 text-sm">
+                <li>Free, no-obligation estimates</li>
+                <li>Licensed and insured</li>
+                <li>Professional, experienced crews</li>
+                <li>Serving Dallas and surrounding areas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
-  );
+  )
 }
