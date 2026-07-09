@@ -1,68 +1,80 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { MapPin, ArrowRight } from "lucide-react";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { CTABanner } from "@/components/sections/CTABanner";
-import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { locations } from "@/data/locations";
-import { siteImages } from "@/data/images";
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { buildMetadata } from '@/lib/metadata'
+import { site } from '@/data/site'
+import { cities } from '@/data/cities'
+import { HeroSection } from '@/components/sections/HeroSection'
+import { CtaSection } from '@/components/sections/CtaSection'
+import { CityCard } from '@/components/ui/CityCard'
+import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
+import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 
-export const metadata: Metadata = {
-  title: "Concrete Service Areas Across DFW",
+export const metadata: Metadata = buildMetadata({
+  title: 'Service Areas — Concrete Contractor Dallas-Fort Worth',
   description:
-    "Concrete Pros Of Dallas serves Plano, Allen, Richardson, Garland, Arlington, Coppell, and communities across the DFW metroplex. Find your city.",
-  alternates: { canonical: "/service-areas" },
-};
+    'Dallas Concrete Pros serves Dallas, Fort Worth, Plano, Frisco, McKinney, and 15+ cities across the DFW metroplex. Call 214-466-2536 for a free estimate.',
+  canonical: `${site.baseUrl}/service-areas`,
+})
 
-export default function ServiceAreasPage() {
+export default function ServiceAreasIndexPage() {
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: 'Service Areas' },
+  ]
+
   return (
     <>
-      <HeroSection
-        title="Serving the DFW Metroplex"
-        subtitle="Local concrete contractors trusted by homeowners and businesses across Dallas–Fort Worth."
-        imageSrc={siteImages.serviceAreasHero}
-        imageAlt="Map view of the Dallas–Fort Worth metroplex"
-        height="sm"
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: site.baseUrl },
+          { name: 'Service Areas', url: `${site.baseUrl}/service-areas` },
+        ]}
       />
 
-      <Section background="white">
-        <SectionHeading
-          eyebrow="Where We Work"
-          title="Find Your City"
-          subtitle="We bring the same quality, fair pricing, and dependable scheduling to every community we serve."
-        />
-        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {locations.map((l) => (
-            <Link
-              key={l.slug}
-              href={`/service-areas/${l.slug}`}
-              className="group rounded-lg border border-border bg-white p-6 shadow-md transition-shadow hover:shadow-xl"
-            >
-              <div className="flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-accent/10">
-                  <MapPin className="h-5 w-5 text-accent" aria-hidden="true" />
-                </span>
-                <div>
-                  <h3 className="font-display text-xl font-semibold text-dark">
-                    {l.city}, TX
-                  </h3>
-                  <p className="text-sm text-mid">{l.county}</p>
-                </div>
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-mid">
-                {l.heroSubtitle}
-              </p>
-              <span className="mt-4 inline-flex items-center gap-1 font-display text-sm font-medium uppercase tracking-wide text-accent">
-                View {l.city}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </span>
-            </Link>
-          ))}
+      <section className="bg-brand-charcoal text-white py-6">
+        <div className="max-w-5xl mx-auto px-4">
+          <BreadcrumbNav items={breadcrumbItems} />
         </div>
-      </Section>
+      </section>
 
-      <CTABanner />
+      <HeroSection
+        headline="Concrete Contractors Serving Dallas-Fort Worth"
+        subhead="We provide professional concrete services to homeowners and businesses across the DFW metroplex. Find your city below to learn more about our work in your area."
+        showPhoneCta
+      />
+
+      <section className="py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-brand-charcoal text-center mb-10">
+            Cities We Serve
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {cities.map((city) => (
+              <CityCard
+                key={city.slug}
+                slug={city.slug}
+                name={city.name}
+                county={city.county}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-brand-gray-light py-12">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <p className="text-brand-gray">
+            Don&apos;t see your city listed? We serve the entire Dallas-Fort Worth
+            metroplex.{' '}
+            <Link href="/contact" className="text-brand-orange hover:underline font-medium">
+              Contact us
+            </Link>{' '}
+            to discuss your project — we likely serve your area.
+          </p>
+        </div>
+      </section>
+
+      <CtaSection />
     </>
-  );
+  )
 }

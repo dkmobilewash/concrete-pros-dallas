@@ -1,60 +1,40 @@
-import { Star } from "lucide-react";
-import { testimonials } from "@/data/testimonials";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Testimonial } from "@/types";
+import { TestimonialCard } from '@/components/ui/TestimonialCard'
 
-interface TestimonialsSectionProps {
-  heading?: string;
-  eyebrow?: string;
-  items?: Testimonial[];
-}
+const testimonials = [
+  {
+    quote:
+      'They poured our new driveway in two days and the finish is flawless. The crew was professional and cleaned up everything before they left.',
+    attribution: 'Homeowner in Dallas',
+  },
+  {
+    quote:
+      'We got quotes from five companies and Dallas Concrete Pros gave us the best combination of price and quality. Our patio turned out beautiful.',
+    attribution: 'Homeowner in Frisco',
+  },
+  {
+    quote:
+      'From the estimate to the final walkthrough, communication was excellent. They explained every step and delivered exactly what they promised.',
+    attribution: 'Homeowner in Plano',
+  },
+]
 
-export function TestimonialsSection({
-  heading = "What Our Customers Say",
-  eyebrow = "Reviews",
-  items = testimonials,
-}: TestimonialsSectionProps) {
+export function TestimonialsSection() {
   return (
-    <section className="bg-primary py-20 text-white">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionHeading eyebrow={eyebrow} title={heading} light />
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {items.map((t, i) => (
-            <TestimonialCard key={`${t.name}-${i}`} testimonial={t} />
+    <section className="bg-brand-charcoal text-white py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-10">
+          What Our Clients Say
+        </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard
+              key={index}
+              quote={testimonial.quote}
+              attribution={testimonial.attribution}
+            />
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-export function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
-  return (
-    <figure className="flex h-full flex-col rounded-lg bg-white/5 p-6 ring-1 ring-white/10">
-      <Stars count={testimonial.rating} />
-      <blockquote className="mt-4 flex-1 text-light/90">
-        “{testimonial.quote}”
-      </blockquote>
-      <figcaption className="mt-5 font-display font-semibold text-white">
-        {testimonial.name}
-        <span className="ml-2 font-body text-sm font-normal text-accent">
-          {testimonial.city}, TX
-        </span>
-      </figcaption>
-    </figure>
-  );
-}
-
-function Stars({ count }: { count: number }) {
-  return (
-    <div className="flex gap-0.5" aria-label={`${count} out of 5 stars`}>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className="h-5 w-5 fill-yellow-400 text-yellow-400"
-          aria-hidden="true"
-        />
-      ))}
-    </div>
-  );
+  )
 }

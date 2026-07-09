@@ -1,51 +1,45 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { services } from "@/data/services";
-import { Service } from "@/types";
+import { ServiceCard } from '@/components/ui/ServiceCard'
+import { services } from '@/data/services'
 
-interface ServicesGridProps {
-  /** Optionally limit which services show (by slug). Defaults to all. */
-  items?: Service[];
+const descriptions: Record<string, string> = {
+  'concrete-driveways':
+    'Durable, crack-resistant driveways built for Texas heat and heavy vehicles.',
+  'concrete-patios':
+    'Custom patios designed for outdoor living and year-round entertaining.',
+  'concrete-walkways':
+    'Safe, slip-resistant walkways connecting your home with style.',
+  'concrete-foundations':
+    'Solid foundations engineered for North Texas soil conditions.',
+  'retaining-walls':
+    'Engineered walls that manage soil and add curb appeal.',
+  'stamped-concrete':
+    'The look of natural stone or brick at a fraction of the cost.',
+  'commercial-concrete':
+    'Heavy-duty solutions for parking lots, docks, and commercial properties.',
 }
 
-export function ServicesGrid({ items = services }: ServicesGridProps) {
+export function ServicesGrid() {
   return (
-    <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {items.map((service) => (
-        <ServiceCard key={service.slug} service={service} />
-      ))}
-    </div>
-  );
-}
-
-function ServiceCard({ service }: { service: Service }) {
-  return (
-    <Link
-      href={`/services/${service.slug}`}
-      className="group flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-md transition-shadow duration-300 hover:shadow-xl"
-    >
-      <div className="relative aspect-[4/3] w-full overflow-hidden">
-        <Image
-          src={service.heroImage}
-          alt={`${service.name} project in the Dallas area`}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-        />
-      </div>
-      <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-display text-xl font-semibold text-dark md:text-2xl">
-          {service.name}
-        </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-mid">
-          {service.shortDescription}
+    <section className="bg-white py-16">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-3xl font-bold text-brand-charcoal text-center">
+          Our Concrete Services
+        </h2>
+        <p className="text-brand-gray text-center mt-3 mb-10">
+          From driveways to commercial projects, we handle it all.
         </p>
-        <span className="mt-5 inline-flex items-center gap-1 font-display text-sm font-medium uppercase tracking-wide text-accent">
-          Learn More
-          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-        </span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => (
+            <ServiceCard
+              key={service.slug}
+              slug={service.slug}
+              name={service.name}
+              icon={service.icon}
+              description={descriptions[service.slug] ?? ''}
+            />
+          ))}
+        </div>
       </div>
-    </Link>
-  );
+    </section>
+  )
 }

@@ -1,98 +1,104 @@
-import type { Metadata } from "next";
-import { ShieldCheck, FileCheck2, MapPin, Star } from "lucide-react";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { ServiceAreaMap } from "@/components/sections/ServiceAreaMap";
-import { CTABanner } from "@/components/sections/CTABanner";
-import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { Badge } from "@/components/ui/Badge";
-import { JsonLd, localBusinessSchema } from "@/components/JsonLd";
-import { siteImages } from "@/data/images";
+import type { Metadata } from 'next'
+import Link from 'next/link'
+import { HeroSection } from '@/components/sections/HeroSection'
+import { ServicesGrid } from '@/components/sections/ServicesGrid'
+import { WhyChooseUs } from '@/components/sections/WhyChooseUs'
+import { ServiceAreasSection } from '@/components/sections/ServiceAreasSection'
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
+import { FaqSection } from '@/components/sections/FaqSection'
+import { CtaSection } from '@/components/sections/CtaSection'
+import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
 
 export const metadata: Metadata = {
-  // absolute bypasses the layout's "%s | Concrete Pros Of Dallas" template so
-  // the brand isn't duplicated on the homepage.
-  title: { absolute: "Concrete Pros Of Dallas | Driveways, Patios & More" },
+  title: {
+    absolute: 'Concrete Contractors Dallas TX | Dallas Concrete Pros',
+  },
   description:
-    "Dallas's trusted concrete contractors. We pour driveways, patios, pool decks, and more across the DFW metroplex. Get a free estimate today.",
-  alternates: { canonical: "/" },
-};
+    'Dallas Concrete Pros — trusted concrete contractors in Dallas, TX. Driveways, patios, foundations, stamped concrete, repair, and commercial concrete across the DFW metroplex. Call 214-466-2536 for a free estimate.',
+}
 
-const trustBadges = [
-  { icon: ShieldCheck, label: "Licensed & Insured" },
-  { icon: FileCheck2, label: "Free Estimates" },
-  { icon: MapPin, label: "Serving DFW Since 2003" },
-  { icon: Star, label: "5-Star Google Rated" },
-];
+const homeFaqs = [
+  {
+    question: 'How much does a concrete driveway cost in Dallas?',
+    answer:
+      'Concrete driveway costs in Dallas typically range from $6 to $15 per square foot depending on size, thickness, finish, and site preparation. A standard two-car driveway usually runs between $2,400 and $9,000. Contact us for a free, no-obligation estimate tailored to your property.',
+  },
+  {
+    question: 'How long does concrete take to cure in Texas heat?',
+    answer:
+      'In the Dallas heat, concrete typically reaches initial set within 24–48 hours and full cure strength in about 28 days. We take precautions during hot-weather pours — including proper curing compounds and timing — to prevent rapid moisture loss and surface cracking.',
+  },
+  {
+    question: 'Do you offer free estimates for concrete work in Dallas?',
+    answer:
+      'Yes, we provide free on-site estimates for all residential and commercial concrete projects throughout the Dallas-Fort Worth area. Call us at 214-466-2536 or submit our online form to schedule yours.',
+  },
+  {
+    question: 'What cities do you serve in the Dallas-Fort Worth area?',
+    answer:
+      'We serve Dallas, Fort Worth, Frisco, McKinney, Plano, Allen, Prosper, Southlake, Flower Mound, Celina, Rockwall, Irving, Garland, Mesquite, Lewisville, Richardson, Carrollton, Denton, and the surrounding communities throughout the DFW metroplex.',
+  },
+  {
+    question: 'Are you licensed and insured?',
+    answer:
+      'Yes, Dallas Concrete Pros is fully licensed and insured. We carry general liability and workers compensation insurance to protect our clients and crew on every project.',
+  },
+  {
+    question: 'What types of concrete services do you offer?',
+    answer:
+      'We provide concrete driveways, patios, walkways, foundations, retaining walls, stamped concrete, concrete repair, concrete resurfacing and sealing, and full commercial concrete services including parking lots, loading docks, and ADA-compliant flatwork.',
+  },
+]
 
 export default function HomePage() {
   return (
     <>
-      <JsonLd data={localBusinessSchema} />
-
+      <LocalBusinessSchema />
       <HeroSection
-        title="Dallas's Concrete Experts"
-        subtitle="From driveways to commercial slabs — quality work, fair prices, and a finish that lasts."
-        imageSrc={siteImages.homeHero}
-        imageAlt="Freshly poured concrete driveway in front of a Dallas home"
-        primaryCta={{ text: "Get a Free Estimate", href: "/contact" }}
-        secondaryCta={{ text: "See Our Work", href: "/gallery" }}
-        height="full"
-        showScrollChevron
+        headline="Concrete Contractors in Dallas, TX"
+        subhead="Dallas Concrete Pros delivers professional concrete installation, repair, and resurfacing for residential and commercial properties across the Dallas-Fort Worth metroplex. From driveways and patios to foundations and commercial flatwork — get a free estimate today."
+        showPhoneCta
       />
 
-      {/* Trust bar */}
-      <div className="border-y border-border bg-white">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-6 sm:px-6 lg:grid-cols-4 lg:px-8">
-          {trustBadges.map((b) => (
-            <div key={b.label} className="flex items-center justify-center">
-              <Badge icon={b.icon}>{b.label}</Badge>
-            </div>
-          ))}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal mb-6">
+            Dallas&apos;s Trusted Concrete Company
+          </h2>
+          <p className="text-brand-gray leading-relaxed mb-4">
+            Looking for reliable concrete contractors in Dallas, TX? Dallas Concrete Pros
+            is a full-service concrete company serving homeowners and businesses throughout
+            the Dallas-Fort Worth metroplex. Whether you need a new concrete driveway, a
+            custom patio, a slab foundation, or commercial concrete work, our experienced
+            crews deliver quality results on every project.
+          </p>
+          <p className="text-brand-gray leading-relaxed mb-4">
+            As one of the top-rated concrete companies in Dallas, we handle everything from
+            small residential walkway installations to large-scale commercial pours. Our
+            services include concrete paving, stamped concrete, retaining walls, concrete
+            repair, and resurfacing — all backed by honest pricing and clear communication
+            from estimate to completion.
+          </p>
+          <p className="text-brand-gray leading-relaxed">
+            We serve Dallas and surrounding cities including{' '}
+            <Link href="/service-areas/fort-worth" className="text-brand-orange hover:underline">Fort Worth</Link>,{' '}
+            <Link href="/service-areas/plano" className="text-brand-orange hover:underline">Plano</Link>,{' '}
+            <Link href="/service-areas/frisco" className="text-brand-orange hover:underline">Frisco</Link>,{' '}
+            <Link href="/service-areas/mckinney" className="text-brand-orange hover:underline">McKinney</Link>,{' '}
+            and{' '}
+            <Link href="/service-areas" className="text-brand-orange hover:underline">18+ cities across the DFW area</Link>.
+            Call <a href="tel:+12144662536" className="text-brand-orange hover:underline font-medium">214-466-2536</a> for
+            a free estimate on your next concrete project.
+          </p>
         </div>
-      </div>
+      </section>
 
-      {/* Services */}
-      <Section background="white">
-        <SectionHeading
-          eyebrow="What We Do"
-          title="Our Concrete Services"
-          subtitle="Residential and commercial concrete done right — built for North Texas heat, clay soil, and the way you actually use your space."
-        />
-        <div className="mt-12">
-          <ServicesGrid />
-        </div>
-      </Section>
-
-      {/* Why choose us */}
-      <Section background="light">
-        <SectionHeading
-          eyebrow="Why Us"
-          title="Why Dallas Homeowners Choose Us"
-        />
-        <div className="mt-12">
-          <WhyChooseUs />
-        </div>
-      </Section>
-
-      {/* Testimonials */}
+      <ServicesGrid />
+      <WhyChooseUs />
+      <ServiceAreasSection />
       <TestimonialsSection />
-
-      {/* Service areas preview */}
-      <Section background="white">
-        <SectionHeading
-          eyebrow="Where We Work"
-          title="Proudly Serving the DFW Metroplex"
-        />
-        <div className="mt-10">
-          <ServiceAreaMap />
-        </div>
-      </Section>
-
-      <CTABanner />
+      <FaqSection faqs={homeFaqs} />
+      <CtaSection />
     </>
-  );
+  )
 }
