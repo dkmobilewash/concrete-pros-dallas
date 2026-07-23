@@ -32,6 +32,15 @@ export function LocalBusinessSchema({ city }: LocalBusinessSchemaProps) {
       longitude: site.geo.longitude,
     },
     sameAs: site.sameAs,
+    ...(site.aggregateRating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: site.aggregateRating.ratingValue,
+            reviewCount: site.aggregateRating.reviewCount,
+          },
+        }
+      : {}),
     areaServed: cities.map(c => ({
       '@type': 'City',
       name: `${c.name}, TX`,

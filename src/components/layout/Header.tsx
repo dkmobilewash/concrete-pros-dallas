@@ -59,7 +59,7 @@ export default function Header() {
                     <Link
                       key={service.slug}
                       href={`/services/${service.slug}`}
-                      className="block px-4 py-2 text-sm text-brand-gray hover:text-white hover:bg-brand-gray-mid/20 transition"
+                      className="block px-4 py-2 text-sm text-brand-gray-mid hover:text-white hover:bg-brand-gray-mid/20 transition"
                     >
                       {service.name}
                     </Link>
@@ -92,7 +92,7 @@ export default function Header() {
                     <Link
                       key={city.slug}
                       href={`/service-areas/${city.slug}`}
-                      className="block px-4 py-2 text-sm text-brand-gray hover:text-white hover:bg-brand-gray-mid/20 transition"
+                      className="block px-4 py-2 text-sm text-brand-gray-mid hover:text-white hover:bg-brand-gray-mid/20 transition"
                     >
                       {city.name}
                     </Link>

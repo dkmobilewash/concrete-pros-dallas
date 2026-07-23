@@ -37,7 +37,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                 <Link
                   href={`/services/${service.slug}`}
                   onClick={onClose}
-                  className="block text-brand-gray hover:text-white transition"
+                  className="block text-brand-gray-mid hover:text-white transition"
                 >
                   {service.name}
                 </Link>
@@ -57,7 +57,7 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
                 <Link
                   href={`/service-areas/${city.slug}`}
                   onClick={onClose}
-                  className="block text-brand-gray hover:text-white transition"
+                  className="block text-brand-gray-mid hover:text-white transition"
                 >
                   {city.name}
                 </Link>
@@ -71,21 +71,21 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
           <Link
             href="/about"
             onClick={onClose}
-            className="block text-brand-gray hover:text-white transition"
+            className="block text-brand-gray-mid hover:text-white transition"
           >
             About
           </Link>
           <Link
             href="/blog"
             onClick={onClose}
-            className="block text-brand-gray hover:text-white transition"
+            className="block text-brand-gray-mid hover:text-white transition"
           >
             Blog
           </Link>
           <Link
             href="/contact"
             onClick={onClose}
-            className="block text-brand-gray hover:text-white transition"
+            className="block text-brand-gray-mid hover:text-white transition"
           >
             Contact
           </Link>

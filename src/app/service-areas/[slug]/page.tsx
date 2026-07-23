@@ -10,6 +10,7 @@ import { buildMetadata } from '@/lib/metadata'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
+import { AreaServiceSchema } from '@/components/seo/AreaServiceSchema'
 import { FaqSection } from '@/components/sections/FaqSection'
 import { CtaSection } from '@/components/sections/CtaSection'
 import { HeroSection } from '@/components/sections/HeroSection'
@@ -336,6 +337,11 @@ export default function CityPage({
   return (
     <>
       <LocalBusinessSchema city={city.name} />
+      <AreaServiceSchema
+        city={city.name}
+        slug={city.slug}
+        description={city.metaDescription}
+      />
       <BreadcrumbSchema
         items={[
           { name: 'Home', url: site.baseUrl },

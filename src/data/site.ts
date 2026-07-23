@@ -11,9 +11,10 @@ export const site = {
     postalCode: '75201',
   },
   geo: {
-    latitude: 32.7872,
-    longitude: -96.7985,
+    latitude: 32.7767,
+    longitude: -96.797,
   },
+  aggregateRating: null as { ratingValue: number; reviewCount: number } | null,
   hours: {
     weekdays: 'Monday–Saturday: 8:00 AM – 6:00 PM',
     weekend: 'Sunday: Closed',

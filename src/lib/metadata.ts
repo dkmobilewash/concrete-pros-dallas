@@ -5,16 +5,18 @@ export function buildMetadata({
   title,
   description,
   canonical,
+  image,
   ogType = 'website',
-  ogImage,
+  noindex = false,
 }: {
   title: string
   description: string
   canonical: string
+  image?: string
   ogType?: 'website' | 'article'
-  ogImage?: string
+  noindex?: boolean
 }): Metadata {
-  const image = ogImage || `${site.baseUrl}${site.ogImage}`
+  const ogImage = image ?? '/opengraph-image'
   return {
     title,
     description,
@@ -26,14 +28,16 @@ export function buildMetadata({
       siteName: site.name,
       locale: 'en_US',
       type: ogType,
-      images: [{ url: image, width: 1200, height: 630, alt: title }],
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image',
       title,
       description,
-      images: [image],
+      images: [ogImage],
     },
-    robots: { index: true, follow: true },
+    robots: noindex
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
   }
 }

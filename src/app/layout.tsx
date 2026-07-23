@@ -1,18 +1,20 @@
-import type { Metadata } from 'next'
-import Script from 'next/script'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { site } from '@/data/site'
 import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
   variable: '--font-inter',
+  display: 'swap',
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.baseUrl),
   title: {
     default: 'Dallas Concrete Pros',
     template: '%s | Dallas Concrete Pros',
@@ -24,12 +26,24 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
+  openGraph: {
+    type: 'website',
+    siteName: site.name,
+    locale: 'en_US',
+  },
+  twitter: {
+    card: 'summary_large_image',
+  },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
     other: {
       'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
     },
   },
+}
+
+export const viewport: Viewport = {
+  themeColor: '#1C1C1E',
 }
 
 export default function RootLayout({

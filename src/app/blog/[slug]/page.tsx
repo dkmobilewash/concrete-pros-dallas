@@ -1,11 +1,14 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { site } from '@/data/site'
+import { services } from '@/data/services'
 import { buildMetadata } from '@/lib/metadata'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
+import { ArticleSchema } from '@/components/seo/ArticleSchema'
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }))
@@ -40,32 +43,6 @@ export default function BlogPostPage({
     { label: post.title },
   ]
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.description,
-    datePublished: post.date,
-    author: {
-      '@type': 'Organization',
-      name: site.name,
-      url: site.baseUrl,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: site.name,
-      url: site.baseUrl,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${site.baseUrl}${site.logo}`,
-      },
-    },
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${site.baseUrl}/blog/${post.slug}`,
-    },
-  }
-
   return (
     <>
       <BreadcrumbSchema
@@ -75,9 +52,11 @@ export default function BlogPostPage({
           { name: post.title, url: `${site.baseUrl}/blog/${post.slug}` },
         ]}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      <ArticleSchema
+        title={post.title}
+        description={post.description}
+        datePublished={post.date}
+        slug={post.slug}
       />
 
       <section className="bg-brand-charcoal text-white py-6">
@@ -104,6 +83,24 @@ export default function BlogPostPage({
           <div className="prose prose-lg max-w-none prose-headings:text-brand-charcoal prose-a:text-brand-orange">
             <MDXRemote source={post.content} />
           </div>
+
+          <aside className="mt-12 border-t border-brand-gray-mid/40 pt-8">
+            <h2 className="text-xl font-bold text-brand-charcoal mb-4">
+              Related Concrete Services in Dallas
+            </h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="text-brand-orange hover:underline font-medium"
+                  >
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
       </article>
     </>
