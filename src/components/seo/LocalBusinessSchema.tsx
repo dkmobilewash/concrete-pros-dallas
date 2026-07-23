@@ -21,6 +21,21 @@ export function LocalBusinessSchema({ city }: LocalBusinessSchemaProps) {
       addressRegion: site.address.stateCode,
       addressCountry: 'US',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: site.geo.latitude,
+      longitude: site.geo.longitude,
+    },
+    // Only emitted once real, verified review totals are set in site config.
+    ...(site.aggregateRating
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: site.aggregateRating.ratingValue,
+            reviewCount: site.aggregateRating.reviewCount,
+          },
+        }
+      : {}),
     areaServed: cities.map(c => ({
       '@type': 'City',
       name: `${c.name}, TX`,

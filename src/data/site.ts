@@ -8,6 +8,15 @@ export const site = {
     state: 'Texas',
     stateCode: 'TX',
   },
+  // Geo coordinates for LocalBusiness schema (central Dallas, TX).
+  geo: {
+    latitude: 32.7767,
+    longitude: -96.797,
+  },
+  // AggregateRating for schema. Leave null until REAL review counts exist —
+  // fabricating ratings violates Google's structured-data policy. When you have
+  // verified totals, set e.g. { ratingValue: 4.9, reviewCount: 87 }.
+  aggregateRating: null as { ratingValue: number; reviewCount: number } | null,
   hours: {
     weekdays: 'Monday–Saturday: 8:00 AM – 6:00 PM',
     weekend: 'Sunday: Closed',

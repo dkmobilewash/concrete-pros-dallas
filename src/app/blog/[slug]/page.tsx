@@ -1,11 +1,14 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { getAllPosts, getPostBySlug } from '@/lib/blog'
 import { site } from '@/data/site'
+import { services } from '@/data/services'
 import { buildMetadata } from '@/lib/metadata'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { BreadcrumbNav } from '@/components/ui/BreadcrumbNav'
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
+import { ArticleSchema } from '@/components/seo/ArticleSchema'
 
 export function generateStaticParams() {
   return getAllPosts().map((post) => ({ slug: post.slug }))
@@ -48,6 +51,12 @@ export default function BlogPostPage({
           { name: post.title, url: `${site.baseUrl}/blog/${post.slug}` },
         ]}
       />
+      <ArticleSchema
+        title={post.title}
+        description={post.description}
+        datePublished={post.date}
+        slug={post.slug}
+      />
 
       <section className="bg-brand-charcoal text-white py-6">
         <div className="max-w-4xl mx-auto px-4">
@@ -73,6 +82,25 @@ export default function BlogPostPage({
           <div className="prose prose-lg max-w-none prose-headings:text-brand-charcoal prose-a:text-brand-orange">
             <MDXRemote source={post.content} />
           </div>
+
+          {/* Related services — internal links passing equity to service pages */}
+          <aside className="mt-12 border-t border-brand-gray-mid/40 pt-8">
+            <h2 className="text-xl font-bold text-brand-charcoal mb-4">
+              Related Concrete Services in Dallas
+            </h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {services.map((service) => (
+                <li key={service.slug}>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="text-brand-orange hover:underline font-medium"
+                  >
+                    {service.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </aside>
         </div>
       </article>
     </>

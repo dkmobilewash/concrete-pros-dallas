@@ -6,7 +6,7 @@ interface BreadcrumbNavProps {
 
 export function BreadcrumbNav({ items }: BreadcrumbNavProps) {
   return (
-    <nav aria-label="Breadcrumb" className="text-sm text-brand-gray">
+    <nav aria-label="Breadcrumb" className="text-sm text-brand-gray-mid">
       <ol className="flex items-center space-x-2">
         {items.map((item, index) => {
           const isLast = index === items.length - 1
@@ -15,7 +15,7 @@ export function BreadcrumbNav({ items }: BreadcrumbNavProps) {
             <li key={index} className="flex items-center">
               {index > 0 && <span className="mx-2">/</span>}
               {isLast || !item.href ? (
-                <span className="text-brand-charcoal">{item.label}</span>
+                <span className="text-white">{item.label}</span>
               ) : (
                 <Link href={item.href} className="hover:text-brand-orange transition-colors">
                   {item.label}

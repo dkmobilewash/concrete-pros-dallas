@@ -1,5 +1,6 @@
-import type { Metadata } from 'next'
 import Link from 'next/link'
+import { buildMetadata } from '@/lib/metadata'
+import { site } from '@/data/site'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { ServicesGrid } from '@/components/sections/ServicesGrid'
 import { WhyChooseUs } from '@/components/sections/WhyChooseUs'
@@ -9,13 +10,14 @@ import { FaqSection } from '@/components/sections/FaqSection'
 import { CtaSection } from '@/components/sections/CtaSection'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
 
-export const metadata: Metadata = {
-  title: {
-    absolute: 'Concrete Contractors Dallas TX | Dallas Concrete Pros',
-  },
+// Title "Concrete Contractors Dallas TX" + the layout template →
+// "Concrete Contractors Dallas TX | Dallas Concrete Pros" (brand once).
+export const metadata = buildMetadata({
+  title: 'Concrete Contractors Dallas TX',
   description:
     'Dallas Concrete Pros — trusted concrete contractors in Dallas, TX. Driveways, patios, foundations, stamped concrete, repair, and commercial concrete across the DFW metroplex. Call 214-466-2536 for a free estimate.',
-}
+  canonical: site.baseUrl,
+})
 
 const homeFaqs = [
   {
