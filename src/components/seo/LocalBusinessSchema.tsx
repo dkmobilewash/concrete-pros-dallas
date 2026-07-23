@@ -10,17 +10,28 @@ export function LocalBusinessSchema({ city }: LocalBusinessSchemaProps) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
+    '@id': `${site.baseUrl}/#organization`,
     name: site.name,
     telephone: site.phone,
     email: site.email,
     url: site.baseUrl,
+    logo: `${site.baseUrl}${site.logo}`,
+    image: `${site.baseUrl}${site.ogImage}`,
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: site.address.streetAddress,
       addressLocality: city || site.address.city,
       addressRegion: site.address.stateCode,
+      postalCode: site.address.postalCode,
       addressCountry: 'US',
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: site.geo.latitude,
+      longitude: site.geo.longitude,
+    },
+    sameAs: site.sameAs,
     areaServed: cities.map(c => ({
       '@type': 'City',
       name: `${c.name}, TX`,

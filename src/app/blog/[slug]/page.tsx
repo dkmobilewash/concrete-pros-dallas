@@ -22,6 +22,7 @@ export function generateMetadata({
     title: post.title,
     description: post.description,
     canonical: `${site.baseUrl}/blog/${post.slug}`,
+    ogType: 'article',
   })
 }
 
@@ -39,6 +40,32 @@ export default function BlogPostPage({
     { label: post.title },
   ]
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    datePublished: post.date,
+    author: {
+      '@type': 'Organization',
+      name: site.name,
+      url: site.baseUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: site.name,
+      url: site.baseUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${site.baseUrl}${site.logo}`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `${site.baseUrl}/blog/${post.slug}`,
+    },
+  }
+
   return (
     <>
       <BreadcrumbSchema
@@ -47,6 +74,10 @@ export default function BlogPostPage({
           { name: 'Blog', url: `${site.baseUrl}/blog` },
           { name: post.title, url: `${site.baseUrl}/blog/${post.slug}` },
         ]}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
 
       <section className="bg-brand-charcoal text-white py-6">

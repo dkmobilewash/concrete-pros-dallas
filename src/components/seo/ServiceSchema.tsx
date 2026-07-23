@@ -1,4 +1,5 @@
 import { site } from '@/data/site'
+import { cities } from '@/data/cities'
 
 interface ServiceSchemaProps {
   name: string
@@ -13,20 +14,23 @@ export function ServiceSchema({ name, description }: ServiceSchemaProps) {
     description,
     provider: {
       '@type': 'HomeAndConstructionBusiness',
+      '@id': `${site.baseUrl}/#organization`,
       name: site.name,
       telephone: site.phone,
       url: site.baseUrl,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: site.address.streetAddress,
         addressLocality: site.address.city,
         addressRegion: site.address.stateCode,
+        postalCode: site.address.postalCode,
         addressCountry: 'US',
       },
     },
-    areaServed: {
-      '@type': 'State',
-      name: site.address.state,
-    },
+    areaServed: cities.map(c => ({
+      '@type': 'City',
+      name: `${c.name}, TX`,
+    })),
     serviceType: name,
   }
 

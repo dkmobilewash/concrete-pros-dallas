@@ -420,7 +420,7 @@ export default function CityPage({
             {services.map((s) => (
               <Link
                 key={s.slug}
-                href={`/services/${s.slug}`}
+                href={`/${s.slug}/${city.slug}`}
                 className="flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm hover:shadow-md hover:border-brand-orange border border-transparent transition-all group"
               >
                 <span className="text-brand-charcoal group-hover:text-brand-orange font-medium">

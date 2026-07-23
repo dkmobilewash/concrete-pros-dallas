@@ -414,7 +414,7 @@ export default function ServicePage({
             We install {service.name.toLowerCase()} throughout{' '}
             {topCities.map((c, i) => (
               <span key={c.slug}>
-                <Link href={`/service-areas/${c.slug}`} className="text-brand-orange hover:underline">
+                <Link href={`/${service.slug}/${c.slug}`} className="text-brand-orange hover:underline">
                   {c.name}
                 </Link>
                 {i < topCities.length - 1 ? ', ' : ''}

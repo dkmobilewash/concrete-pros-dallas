@@ -10,13 +10,21 @@ import { CtaSection } from '@/components/sections/CtaSection'
 import { ProjectGallery } from '@/components/sections/ProjectGallery'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
 import { heroImage } from '@/data/images'
+import { site } from '@/data/site'
+import { buildMetadata } from '@/lib/metadata'
+
+const meta = buildMetadata({
+  title: 'Concrete Contractors Dallas TX | Dallas Concrete Pros',
+  description:
+    'Dallas Concrete Pros — trusted concrete contractors in Dallas, TX. Driveways, patios, foundations, stamped concrete, repair, and commercial concrete across the DFW metroplex. Call 214-466-2536 for a free estimate.',
+  canonical: site.baseUrl,
+})
 
 export const metadata: Metadata = {
+  ...meta,
   title: {
     absolute: 'Concrete Contractors Dallas TX | Dallas Concrete Pros',
   },
-  description:
-    'Dallas Concrete Pros — trusted concrete contractors in Dallas, TX. Driveways, patios, foundations, stamped concrete, repair, and commercial concrete across the DFW metroplex. Call 214-466-2536 for a free estimate.',
 }
 
 const homeFaqs = [
@@ -90,7 +98,7 @@ export default function HomePage() {
             <Link href="/service-areas/mckinney" className="text-brand-orange hover:underline">McKinney</Link>,{' '}
             and{' '}
             <Link href="/service-areas" className="text-brand-orange hover:underline">18+ cities across the DFW area</Link>.
-            Call <a href="tel:+12144662536" className="text-brand-orange hover:underline font-medium">214-466-2536</a> for
+            Call <a href={site.phoneHref} className="text-brand-orange hover:underline font-medium">{site.phone}</a> for
             a free estimate on your next concrete project.
           </p>
         </div>

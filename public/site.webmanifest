@@ -1,0 +1,16 @@
+{
+  "name": "Dallas Concrete Pros",
+  "short_name": "Dallas Concrete",
+  "description": "Professional concrete contractors in Dallas, TX",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#ffffff",
+  "theme_color": "#E8520A",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

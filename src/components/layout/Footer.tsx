@@ -14,7 +14,9 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">{site.name}</h3>
             <div className="space-y-2 text-sm text-brand-gray-mid">
-              <p>{site.hours.weekdays}</p>
+              <p>{site.address.streetAddress}</p>
+              <p>{site.address.city}, {site.address.stateCode} {site.address.postalCode}</p>
+              <p className="mt-3">{site.hours.weekdays}</p>
               <p>{site.hours.weekend}</p>
               <p className="mt-3">
                 <a

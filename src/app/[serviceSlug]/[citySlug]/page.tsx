@@ -76,8 +76,11 @@ export default function ServiceCityPage({
       url: site.baseUrl,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: site.address.streetAddress,
         addressLocality: site.address.city,
         addressRegion: site.address.stateCode,
+        postalCode: site.address.postalCode,
+        addressCountry: 'US',
       },
     },
     areaServed: {
