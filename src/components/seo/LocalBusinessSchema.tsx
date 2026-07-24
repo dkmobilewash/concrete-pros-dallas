@@ -10,15 +10,20 @@ export function LocalBusinessSchema({ city }: LocalBusinessSchemaProps) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'HomeAndConstructionBusiness',
+    '@id': `${site.baseUrl}/#organization`,
     name: site.name,
     telephone: site.phone,
     email: site.email,
     url: site.baseUrl,
+    logo: `${site.baseUrl}${site.logo}`,
+    image: `${site.baseUrl}${site.ogImage}`,
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
+      streetAddress: site.address.streetAddress,
       addressLocality: city || site.address.city,
       addressRegion: site.address.stateCode,
+      postalCode: site.address.postalCode,
       addressCountry: 'US',
     },
     geo: {
@@ -26,7 +31,7 @@ export function LocalBusinessSchema({ city }: LocalBusinessSchemaProps) {
       latitude: site.geo.latitude,
       longitude: site.geo.longitude,
     },
-    // Only emitted once real, verified review totals are set in site config.
+    sameAs: site.sameAs,
     ...(site.aggregateRating
       ? {
           aggregateRating: {

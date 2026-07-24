@@ -5,15 +5,16 @@ import { getAllPosts } from '@/lib/blog'
 import type { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const siteLastModified = new Date('2025-07-20')
   const serviceUrls = services.map((s) => ({
     url: `${site.baseUrl}/services/${s.slug}`,
-    lastModified: new Date(),
+    lastModified: siteLastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }))
   const cityUrls = cities.map((c) => ({
     url: `${site.baseUrl}/service-areas/${c.slug}`,
-    lastModified: new Date(),
+    lastModified: siteLastModified,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }))
@@ -22,7 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const c of cities) {
       serviceCityUrls.push({
         url: `${site.baseUrl}/${s.slug}/${c.slug}`,
-        lastModified: new Date(),
+        lastModified: siteLastModified,
         changeFrequency: 'monthly' as const,
         priority: 0.6,
       })
@@ -35,12 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
   return [
-    { url: site.baseUrl, priority: 1.0, changeFrequency: 'weekly' },
-    { url: `${site.baseUrl}/services`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${site.baseUrl}/service-areas`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${site.baseUrl}/about`, priority: 0.6, changeFrequency: 'yearly' },
-    { url: `${site.baseUrl}/contact`, priority: 0.9, changeFrequency: 'monthly' },
-    { url: `${site.baseUrl}/blog`, priority: 0.5, changeFrequency: 'weekly' },
+    { url: site.baseUrl, lastModified: siteLastModified, priority: 1.0, changeFrequency: 'weekly' },
+    { url: `${site.baseUrl}/services`, lastModified: siteLastModified, priority: 0.9, changeFrequency: 'monthly' },
+    { url: `${site.baseUrl}/service-areas`, lastModified: siteLastModified, priority: 0.9, changeFrequency: 'monthly' },
+    { url: `${site.baseUrl}/about`, lastModified: siteLastModified, priority: 0.6, changeFrequency: 'yearly' },
+    { url: `${site.baseUrl}/contact`, lastModified: siteLastModified, priority: 0.9, changeFrequency: 'monthly' },
+    { url: `${site.baseUrl}/blog`, lastModified: siteLastModified, priority: 0.5, changeFrequency: 'weekly' },
     ...serviceUrls,
     ...cityUrls,
     ...serviceCityUrls,

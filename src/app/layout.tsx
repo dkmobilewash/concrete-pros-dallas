@@ -6,9 +6,6 @@ import Footer from '@/components/layout/Footer'
 import { site } from '@/data/site'
 import './globals.css'
 
-// Self-hosted via next/font: eliminates the render-blocking Google Fonts
-// stylesheet (better LCP) and auto-generates size-adjust/ascent-override
-// fallback metrics to prevent font-swap layout shift (better CLS).
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
@@ -24,6 +21,11 @@ export const metadata: Metadata = {
   },
   description:
     'Professional concrete contracting for driveways, patios, foundations, and more throughout Dallas and the surrounding areas.',
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     siteName: site.name,

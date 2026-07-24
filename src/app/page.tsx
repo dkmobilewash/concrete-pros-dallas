@@ -8,10 +8,10 @@ import { ServiceAreasSection } from '@/components/sections/ServiceAreasSection'
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
 import { FaqSection } from '@/components/sections/FaqSection'
 import { CtaSection } from '@/components/sections/CtaSection'
+import { ProjectGallery } from '@/components/sections/ProjectGallery'
 import { LocalBusinessSchema } from '@/components/seo/LocalBusinessSchema'
+import { heroImage } from '@/data/images'
 
-// Title "Concrete Contractors Dallas TX" + the layout template →
-// "Concrete Contractors Dallas TX | Dallas Concrete Pros" (brand once).
 export const metadata = buildMetadata({
   title: 'Concrete Contractors Dallas TX',
   description:
@@ -60,6 +60,7 @@ export default function HomePage() {
         headline="Concrete Contractors in Dallas, TX"
         subhead="Dallas Concrete Pros delivers professional concrete installation, repair, and resurfacing for residential and commercial properties across the Dallas-Fort Worth metroplex. From driveways and patios to foundations and commercial flatwork — get a free estimate today."
         showPhoneCta
+        backgroundImage={heroImage}
       />
 
       <section className="py-16 bg-white">
@@ -89,7 +90,7 @@ export default function HomePage() {
             <Link href="/service-areas/mckinney" className="text-brand-orange hover:underline">McKinney</Link>,{' '}
             and{' '}
             <Link href="/service-areas" className="text-brand-orange hover:underline">18+ cities across the DFW area</Link>.
-            Call <a href="tel:+12144662536" className="text-brand-orange hover:underline font-medium">214-466-2536</a> for
+            Call <a href={site.phoneHref} className="text-brand-orange hover:underline font-medium">{site.phone}</a> for
             a free estimate on your next concrete project.
           </p>
         </div>
@@ -98,6 +99,7 @@ export default function HomePage() {
       <ServicesGrid />
       <WhyChooseUs />
       <ServiceAreasSection />
+      <ProjectGallery />
       <TestimonialsSection />
       <FaqSection faqs={homeFaqs} />
       <CtaSection />

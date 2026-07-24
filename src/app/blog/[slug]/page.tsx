@@ -25,6 +25,7 @@ export function generateMetadata({
     title: post.title,
     description: post.description,
     canonical: `${site.baseUrl}/blog/${post.slug}`,
+    ogType: 'article',
   })
 }
 
@@ -83,7 +84,6 @@ export default function BlogPostPage({
             <MDXRemote source={post.content} />
           </div>
 
-          {/* Related services — internal links passing equity to service pages */}
           <aside className="mt-12 border-t border-brand-gray-mid/40 pt-8">
             <h2 className="text-xl font-bold text-brand-charcoal mb-4">
               Related Concrete Services in Dallas

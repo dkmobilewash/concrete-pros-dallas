@@ -1,11 +1,13 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 import { CheckCircle, ArrowRight, Phone } from 'lucide-react'
 import { services } from '@/data/services'
 import { cities } from '@/data/cities'
 import { site } from '@/data/site'
 import { serviceCityContent } from '@/data/service-city-content'
+import { serviceImages } from '@/data/images'
 import { buildMetadata } from '@/lib/metadata'
 import { BreadcrumbSchema } from '@/components/seo/BreadcrumbSchema'
 import { FaqSchema } from '@/components/seo/FaqSchema'
@@ -49,6 +51,8 @@ export default function ServiceCityPage({
   const content = serviceCityContent[`${params.serviceSlug}/${params.citySlug}`]
   if (!content) notFound()
 
+  const images = serviceImages[service.slug]
+
   const breadcrumbItems = [
     { name: site.name, url: site.baseUrl },
     { name: service.name, url: `${site.baseUrl}/services/${service.slug}` },
@@ -72,8 +76,11 @@ export default function ServiceCityPage({
       url: site.baseUrl,
       address: {
         '@type': 'PostalAddress',
+        streetAddress: site.address.streetAddress,
         addressLocality: site.address.city,
         addressRegion: site.address.stateCode,
+        postalCode: site.address.postalCode,
+        addressCountry: 'US',
       },
     },
     areaServed: {
@@ -117,6 +124,24 @@ export default function ServiceCityPage({
           </div>
         </div>
       </section>
+
+      {/* Featured Image */}
+      {images && (
+        <section className="bg-white pt-12 pb-0">
+          <div className="max-w-4xl mx-auto px-4">
+            <div className="relative aspect-[16/9] rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src={images.hero}
+                alt={`${service.name} in ${city.name}, TX by Dallas Concrete Pros`}
+                fill
+                className="object-cover"
+                sizes="(max-width: 896px) 100vw, 896px"
+                priority
+              />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Intro */}
       <section className="py-16 bg-white">

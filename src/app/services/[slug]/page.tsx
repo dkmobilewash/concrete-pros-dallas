@@ -1,8 +1,10 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { services } from '@/data/services'
 import { cities } from '@/data/cities'
 import { site } from '@/data/site'
+import { serviceImages } from '@/data/images'
 import { buildMetadata } from '@/lib/metadata'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { FaqSection } from '@/components/sections/FaqSection'
@@ -270,6 +272,7 @@ export default function ServicePage({
   const content = serviceContent[service.slug]
   if (!content) notFound()
 
+  const images = serviceImages[service.slug]
   const relatedServices = services.filter((s) =>
     service.relatedSlugs.includes(s.slug)
   )
@@ -298,7 +301,12 @@ export default function ServicePage({
         </div>
       </section>
 
-      <HeroSection headline={service.headline} subhead={service.heroSubhead} showPhoneCta />
+      <HeroSection
+        headline={service.headline}
+        subhead={service.heroSubhead}
+        showPhoneCta
+        backgroundImage={images ? { src: images.hero, alt: images.heroAlt } : undefined}
+      />
 
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4">
@@ -353,6 +361,29 @@ export default function ServicePage({
         </div>
       </section>
 
+      {images && images.gallery.length > 0 && (
+        <section className="bg-brand-gray-light py-16">
+          <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-brand-charcoal mb-8 text-center">
+              {service.name} Project Photos
+            </h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+              {images.gallery.map((src) => (
+                <div key={src} className="relative aspect-[4/3] rounded-lg overflow-hidden">
+                  <Image
+                    src={src}
+                    alt={`${service.name} project by Dallas Concrete Pros`}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 50vw, 33vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <FaqSection faqs={content.faqs} heading="Common Questions" />
 
       <section className="py-16">
@@ -383,7 +414,7 @@ export default function ServicePage({
             We install {service.name.toLowerCase()} throughout{' '}
             {topCities.map((c, i) => (
               <span key={c.slug}>
-                <Link href={`/service-areas/${c.slug}`} className="text-brand-orange hover:underline">
+                <Link href={`/${service.slug}/${c.slug}`} className="text-brand-orange hover:underline">
                   {c.name}
                 </Link>
                 {i < topCities.length - 1 ? ', ' : ''}
