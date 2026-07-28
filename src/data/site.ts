@@ -19,9 +19,15 @@ export const site = {
     weekdays: 'Monday–Saturday: 8:00 AM – 6:00 PM',
     weekend: 'Sunday: Closed',
   },
-  baseUrl: 'https://dallasconcretepros.net',
+  // Canonical production origin — single source of truth for canonical tags,
+  // metadataBase, JSON-LD @id/url, the sitemap, and robots. Set to the ONE
+  // primary domain (do not point at the duplicate domain). Overridable per
+  // environment via NEXT_PUBLIC_SITE_URL.
+  baseUrl:
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.concreteprosdallas.com',
   logo: '/images/concrete-driveway-installation.jpg',
   ogImage: '/images/concrete-driveway-installation.jpg',
+  // Entity links for LocalBusiness `sameAs` (Google Business Profile + socials).
   sameAs: [
     'https://www.google.com/maps/place/Dallas+Concrete+Pros/',
   ],

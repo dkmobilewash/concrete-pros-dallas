@@ -13,6 +13,29 @@ const securityHeaders = [
   },
 ]
 
+// Permanent 301s recovering URLs from the earlier build whose slugs/cities
+// changed (GSC "Not found (404)" + "Duplicate" buckets). Targets all exist.
+// NOTE: dropped suburbs (coppell, addison, etc.) currently redirect to the
+// service-areas hub. To RECOVER a suburb as its own page, remove its redirect
+// here and add it to cities.ts WITH full service×city content (the combo route
+// 404s on any missing content entry).
+const legacyRedirects = [
+  // Renamed service pages
+  { source: '/services/driveways', destination: '/services/concrete-driveways' },
+  { source: '/services/patios', destination: '/services/concrete-patios' },
+  { source: '/services/pool-decks', destination: '/services/concrete-patios' },
+  { source: '/services/block-walls', destination: '/services/retaining-walls' },
+  { source: '/services/foundations-slabs', destination: '/services/concrete-foundations' },
+  // Suburbs dropped from the current service-area list
+  { source: '/service-areas/addison', destination: '/service-areas' },
+  { source: '/service-areas/arlington', destination: '/service-areas' },
+  { source: '/service-areas/coppell', destination: '/service-areas' },
+  { source: '/service-areas/university-park', destination: '/service-areas' },
+  { source: '/service-areas/grand-prairie', destination: '/service-areas' },
+  // Removed page
+  { source: '/gallery', destination: '/' },
+]
+
 const nextConfig = {
   async headers() {
     return [
@@ -27,6 +50,9 @@ const nextConfig = {
         ],
       },
     ]
+  },
+  async redirects() {
+    return legacyRedirects.map((r) => ({ ...r, permanent: true }))
   },
 }
 
