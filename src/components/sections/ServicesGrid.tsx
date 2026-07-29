@@ -21,6 +21,8 @@ const descriptions: Record<string, string> = {
     'Restore cracked, settled, or damaged concrete without full replacement.',
   'concrete-resurfacing':
     'Renew worn surfaces with durable overlays and professional sealing.',
+  'concrete-leveling':
+    'Lift sunken driveways, patios, and walkways back to grade — no full replacement.',
 }
 
 export function ServicesGrid() {

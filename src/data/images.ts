@@ -88,6 +88,15 @@ export const serviceImages: Record<
     ],
     heroAlt: 'Concrete resurfacing and finishing in Dallas, TX',
   },
+  'concrete-leveling': {
+    hero: '/images/concrete-driveway-isntallation-before-and-after-west-dallas.jpg',
+    card: '/images/concrete-driveway-isntallation-before-and-after-west-dallas.jpg',
+    gallery: [
+      '/images/concrete-driveway-installation.jpg',
+      '/images/concrete-patio-installation-prosper-tx.jpg',
+    ],
+    heroAlt: 'Concrete slab leveling and lifting in Dallas, TX',
+  },
 }
 
 export const homepageGallery = [

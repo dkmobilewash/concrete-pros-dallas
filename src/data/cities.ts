@@ -483,4 +483,31 @@ export const cities: City[] = [
     intro:
       'Denton is a vibrant college town anchored by the University of North Texas and Texas Woman\'s University, giving the city a youthful energy centered around the lively Denton Square entertainment and dining district. Rapid growth along the I-35 corridor has brought new master-planned communities like Robson Ranch and developments near Rayzor Ranch, expanding the city\'s footprint to the north and west. The mix of student rental properties, established homes in neighborhoods like Idiot\'s Hill and Pecan Creek, and brand-new construction all create strong and varied demand for quality concrete work throughout the year.',
   },
+  {
+    slug: 'coppell',
+    name: 'Coppell',
+    county: 'Dallas County',
+    metaTitle: 'Concrete Contractor Coppell TX',
+    metaDescription:
+      'Professional concrete contractor serving Coppell, TX — driveways, patios, and foundations for the city\'s executive homes. Call 214-466-2536 for a free estimate.',
+    headline: 'Concrete Contractor in Coppell, TX',
+    subhead:
+      'Premium concrete work for Coppell\'s executive homes, established neighborhoods, and top-rated community.',
+    landmarks: [
+      'Andrew Brown Park',
+      'Old Town Coppell',
+      'Coppell Farmers Market',
+      'Cozby Library',
+      'Andy Brown Park East',
+    ],
+    neighborhoods: [
+      'Riverchase',
+      'The Estates',
+      'Old Coppell',
+      'Magnolia Park',
+      'Northlake Woodlands',
+    ],
+    intro:
+      'Coppell is one of the most sought-after addresses in the DFW Metroplex, known for its top-rated Coppell ISD schools, mature tree-lined streets, and executive homes tucked between Old Town Coppell and the greenbelts around Andrew Brown Park. Its convenient position beside DFW Airport and the I-635/SH-121 corridors makes it a magnet for professionals who expect a refined finish on every home improvement. From the established estates of Riverchase and The Estates to the character homes of Old Coppell, homeowners here hold concrete work to a high standard — clean lines, consistent color, and crisp decorative detail. Built on the same expansive Blackland Prairie clay as the rest of the region, Coppell properties get the proper reinforcement and drainage engineering that keeps high-end driveways, patios, and pool decks flat and crack-free for decades.',
+  },
 ]

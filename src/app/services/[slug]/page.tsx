@@ -259,6 +259,31 @@ const serviceContent: Record<
       { question: 'Is resurfacing better than replacing concrete?', answer: 'Resurfacing is better when the existing slab is structurally sound and you want to improve appearance at lower cost. Replacement is the better choice when concrete has deep structural cracks, significant settling, or drainage problems that a surface overlay cannot fix.' },
     ],
   },
+  'concrete-leveling': {
+    overview: [
+      'Concrete leveling — also called slab lifting or slab jacking — raises sunken, uneven concrete back to its original grade without the cost and disruption of tearing it out and pouring new. When a driveway panel drops, a patio slopes toward the house, or a walkway develops a trip hazard, the slab itself is usually still sound; the ground beneath it has moved. Across Dallas and North Texas that movement is driven by our expansive Blackland Prairie clay, which swells after rain and shrinks during drought, along with poor drainage, eroded fill, and plumbing leaks that wash out the supporting soil. Leveling fixes the cause under the slab and restores a safe, even surface in a single visit.',
+      'At Dallas Concrete Pros we level slabs using modern polyurethane foam injection. We drill small, dime-sized ports through the slab, inject an expanding structural foam that fills the voids and compacts the loose soil, and watch the concrete rise precisely back to grade. The foam is waterproof, cures in minutes, and adds almost no weight to the soil — a major advantage over old-fashioned mudjacking on clay. The result is a level driveway, patio, pool deck, or walkway at roughly a third to half the cost of replacement, usually completed in a few hours with the surface ready to use the same day.',
+    ],
+    benefits: [
+      { title: 'Half the Cost of Replacement', desc: 'Slab lifting typically runs 30-50% of the price of tear-out and replacement because we reuse your existing, structurally sound concrete.' },
+      { title: 'Same-Day, Ready to Use', desc: 'Most residential leveling jobs are finished in a few hours, and polyurethane foam cures within minutes so you can drive or walk on the slab the same day.' },
+      { title: 'Engineered for Clay Soil', desc: 'Lightweight, waterproof polyurethane foam fills voids and stabilizes the subgrade without adding load to North Texas expansive clay — unlike heavy mud slurry.' },
+      { title: 'Fixes the Cause, Not Just the Symptom', desc: 'We identify and correct the drainage or soil-washout issue underneath so the slab stays level rather than sinking again.' },
+    ],
+    process: [
+      { step: 'Assessment & Void Detection', desc: 'We measure the settlement, identify why the slab dropped — drainage, eroded fill, or clay shrinkage — and confirm the concrete is sound enough to lift rather than replace.' },
+      { step: 'Port Drilling', desc: 'We drill a series of small, dime-sized injection ports through the sunken slab in a pattern engineered for even, controlled lifting.' },
+      { step: 'Polyurethane Foam Injection', desc: 'High-density structural foam is injected beneath the slab, expanding to fill voids, compact loose soil, and raise the concrete precisely back to grade.' },
+      { step: 'Patch & Finish', desc: 'The injection ports are patched with color-matched cement, the joints are cleaned up, and your level surface is ready for traffic the same day.' },
+    ],
+    faqs: [
+      { question: 'How much does concrete leveling cost in Dallas?', answer: 'Concrete leveling in Dallas typically ranges from $600 to $2,000 for most residential slabs depending on the size of the area and the amount of lift required — generally 30-50% of the cost of full replacement. We provide a free on-site assessment with exact pricing. Call 214-466-2536.' },
+      { question: 'How long does concrete leveling last?', answer: 'Polyurethane foam is waterproof and does not break down, so a properly leveled slab stays stable for many years. Because we also correct the drainage or soil issue that caused the settlement, re-sinking is uncommon when the underlying cause is addressed.' },
+      { question: 'Is slab lifting better than replacing the concrete?', answer: 'If the slab is structurally sound and simply sunken, leveling is faster, far cheaper, and less disruptive than replacement. If the concrete is severely cracked, crumbling, or spalled, replacement is the better long-term choice. We will tell you honestly which your slab needs.' },
+      { question: 'Why does concrete sink in the Dallas area?', answer: 'North Texas sits on expansive clay that swells when wet and shrinks when dry, creating voids under slabs. Combined with poor drainage, eroded builder fill, and the occasional plumbing leak, that movement causes driveways, patios, and walkways to settle unevenly over time.' },
+      { question: 'Can you level a sunken pool deck or patio?', answer: 'Yes. We regularly lift sunken pool decks, patios, walkways, garage floors, and driveway panels. Polyurethane injection works on almost any flat concrete surface where the slab is intact but has dropped out of level.' },
+    ],
+  },
 }
 
 export default function ServicePage({

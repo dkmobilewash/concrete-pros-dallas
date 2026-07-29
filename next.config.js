@@ -29,7 +29,6 @@ const legacyRedirects = [
   // Suburbs dropped from the current service-area list
   { source: '/service-areas/addison', destination: '/service-areas' },
   { source: '/service-areas/arlington', destination: '/service-areas' },
-  { source: '/service-areas/coppell', destination: '/service-areas' },
   { source: '/service-areas/university-park', destination: '/service-areas' },
   { source: '/service-areas/grand-prairie', destination: '/service-areas' },
   // Removed page

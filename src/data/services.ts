@@ -148,4 +148,17 @@ export const services: Service[] = [
     icon: 'Paintbrush',
     relatedSlugs: ['concrete-repair', 'stamped-concrete', 'concrete-patios'],
   },
+  {
+    slug: 'concrete-leveling',
+    name: 'Concrete Leveling',
+    shortName: 'Leveling',
+    headline: 'Concrete Leveling & Slab Lifting in Dallas, TX',
+    metaTitle: 'Concrete Leveling Dallas TX | Slab Lifting',
+    metaDescription:
+      'Concrete leveling and slab lifting in Dallas, TX — fix sunken driveways, patios, and walkways caused by clay soil movement. Call 214-466-2536 for a free estimate.',
+    heroSubhead:
+      'Raise sunken, uneven slabs back to grade without the cost of a full tear-out and replacement.',
+    icon: 'MoveVertical',
+    relatedSlugs: ['concrete-repair', 'concrete-resurfacing', 'concrete-driveways'],
+  },
 ]

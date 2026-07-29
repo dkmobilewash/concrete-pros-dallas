@@ -297,6 +297,20 @@ const cityExtendedContent: Record<
       { question: 'Is Denton too far north for your service area?', answer: 'No. Denton is within our regular service area. Our crews work in Denton regularly, and we offer free on-site estimates throughout the city and surrounding communities.' },
     ],
   },
+  coppell: {
+    whyUs:
+      'Coppell homeowners expect a refined finish, and that is exactly where our decorative concrete work shines. From the executive estates of Riverchase and The Estates to the character homes around Old Coppell, our crews deliver the clean lines, consistent color, and crisp detail that Coppell\'s high standards demand. We know the local permitting process, coordinate with HOAs, and treat every property near Andrew Brown Park and the Coppell ISD schools with the care an affluent, tight-knit community expects.',
+    soilClimate:
+      'Coppell sits on the same expansive Blackland Prairie clay found across the Metroplex — soil that swells after rain and shrinks in drought, punishing any slab that was not engineered for the movement. On Coppell\'s mature, tree-lined lots, root systems add further pressure on driveways and walkways. We start every Coppell project with proper subgrade preparation, engineered reinforcement, and drainage grading that keeps high-end surfaces flat and crack-free for the long haul.',
+    popularProjects:
+      'Decorative driveways, custom stamped patios, and pool decks lead our Coppell project list, reflecting the premium homes throughout Riverchase, Magnolia Park, and Northlake Woodlands. As some of Coppell\'s established neighborhoods age, we also handle a steady stream of driveway replacements, walkway repairs, and slab leveling for homeowners protecting their property values.',
+    faqs: [
+      { question: 'Do you work with Coppell HOAs on concrete projects?', answer: 'Yes. Many Coppell neighborhoods have HOA guidelines for driveway finishes, colors, and materials. We are familiar with common Coppell requirements and coordinate approval before starting work.' },
+      { question: 'Do you offer decorative and stamped concrete in Coppell?', answer: 'Absolutely. Stamped and stained driveways, patios, and pool decks are among our most requested Coppell projects, finished to complement the city\'s executive homes.' },
+      { question: 'What does concrete work cost in Coppell?', answer: 'Concrete pricing in Coppell is in line with the broader DFW market — driveways at roughly $8-16 per square foot and patios at $8-18, with decorative finishes at the higher end. Call 214-466-2536 for a free, project-specific estimate.' },
+      { question: 'Which parts of Coppell do you serve?', answer: 'We serve all of Coppell, including Riverchase, The Estates, Old Coppell, Magnolia Park, and Northlake Woodlands, plus the surrounding areas near Andrew Brown Park and Old Town Coppell.' },
+    ],
+  },
 }
 
 export default function CityPage({
